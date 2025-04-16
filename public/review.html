@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Foodhub</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Construction Company Website Template" name="keywords">
+    <meta content="Construction Company Website Template" name="description">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+<!-- CSS Libraries -->
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"> -->
+<!-- <link href="lib/flaticon/font/flaticon.css" rel="stylesheet"> -->
+<!-- <link href="lib/animate/animate.min.css" rel="stylesheet"> -->
+<!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> -->
+<!-- <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet"> -->
+<link href="libtest/slick/slick.css" rel="stylesheet">
+<!-- <link href="lib/slick/slick-theme.css" rel="stylesheet"> -->
+    <!-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">  -->
+
+    <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+   
+   <!-- Include Font Awesome CDN in your HTML <head> section -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  
+  <!-- Add Bootstrap Icons CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+
+    
+    <style>
+
+
+
+/*******************************/
+/******* Testimonial CSS *******/
+/*******************************/
+.testimonial {
+    position: relative;
+    margin: 45px 0;
+    padding: 90px 0;
+    text-align: center;
+    background: linear-gradient(rgba(3, 15, 39, .9), rgba(3, 15, 39, .9)), url(bg.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.testimonial .container {
+    max-width: 760px;
+}
+
+.about-page .testimonial {
+    padding-bottom: 90px;
+}
+
+.testimonial .testimonial-slider-nav {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.testimonial .testimonial-slider-nav .slick-slide {
+    position: relative;
+    opacity: 0;
+    transition: .5s;
+}
+
+.testimonial .testimonial-slider-nav .slick-active {
+    opacity: 1;
+    transform: scale(1.3);
+}
+
+.testimonial .testimonial-slider-nav .slick-center {
+    transform: scale(1.8);
+    z-index: 1;
+}
+
+.testimonial .testimonial-slider-nav .slick-slide img {
+    position: relative;
+    display: block;
+    margin-top: 37px;
+    width: 100%;
+    height: auto;
+    border-radius: 100px;
+}
+
+.testimonial .testimonial-slider {
+    position: relative;
+    margin-top: 15px;
+    padding-top: 50px;
+}
+
+.testimonial .testimonial-slider::before {
+    position: absolute;
+    content: "";
+    width: 60px;
+    height: 50px;
+    top: 0;
+    left: calc(50% - 30px);
+    background: url(../quote.png) top center no-repeat;
+}
+
+.testimonial .testimonial-slider h3 {
+    color: hsl(32, 100%, 59%);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.testimonial .testimonial-slider h4 {
+    font-size: 14px;
+    font-weight: 300;
+    color: #ffffff;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial .testimonial-slider p {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0;
+}
+
+        /* styles.css */
+
+        /* body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        } */
+
+        .container1 {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .testimonials-list {
+            margin: 20px 0;
+        }
+
+        .testimonial1 {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial1 h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .testimonial1 p {
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .rating {
+            color: hsl(32, 100%, 59%);
+            font-size: 18px;
+        }
+
+        .submit-testimonial {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .submit-testimonial h2 {
+            margin: 0 0 20px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .submit-testimonial form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .submit-testimonial input[type="text"],
+        .submit-testimonial textarea,
+        .submit-testimonial select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .submit-testimonial button {
+            padding: 10px 15px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-testimonial button:hover {
+            background-color: #555;
+        }
+    </style>
+  <body id="top">
+
+    <!-- 
+      - #HEADER
+    -->
+  
+    <header class="header" data-header>
+      <div class="container">
+  
+        <h1 style="display: flex; align-items: center;">
+          <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+            <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+          </a>
+        </h1>
+        
+  
+        
+  
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+  
+            <li class="nav-item">
+              <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./menu.html" class="navbar-link" data-nav-link>Menu</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+            </li>
+  
+             
+            <li class="nav-item">
+              <a href="./review.html" class="navbar-link active" data-nav-link>Reviews</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a href="./event.html" class="navbar-link" data-nav-link>News & Events</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./FAQ.html" class="navbar-link" data-nav-link>FAQ's</a>
+            </li>
+  
+          </ul>
+        </nav>
+  
+  
+         <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a> 
+  
+          <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
+          </button>
+        </div>
+  
+      </div>
+    </header>
+  <br>
+  <br>
+  
+   
+       
+
+
+
+          <!-- Testimonial Start -->
+           <!-- Testimonial Section for Restaurant -->
+<div class="testimonial wow fadeIn" data-wow-delay="0.1s">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="testimonial-slider-nav">
+                    <div class="slider-nav"><img src="img/testimonial-1.jpg" alt="Testimonial"></div>
+                    <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Testimonial"></div>
+                    <div class="slider-nav"><img src="img/testimonial-3.jpg" alt="Testimonial"></div>
+                    <div class="slider-nav"><img src="img/testimonial-4.jpg" alt="Testimonial"></div>
+                    <div class="slider-nav"><img src="img/testimonial-2.jpg" alt="Testimonial"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="testimonial-slider">
+                    <div class="slider-item">
+                        <h3>John Doe</h3>
+                        <h4>Food Blogger</h4>
+                        <p>"The food at Foodhub is absolutely divine! Every dish is a masterpiece, bursting with flavor. The ambiance is warm and welcoming, and the staff are attentive. This place has quickly become my favorite dining spot in town."</p>
+                    </div>
+                    <div class="slider-item">
+                        <h3>Jane Smith</h3>
+                        <h4>Chef</h4>
+                        <p>"As a chef myself, I have high standards, and Foodhub surpassed them all! The quality of the ingredients, the creativity of the menu, and the flawless execution of each dish are simply extraordinary. I’ll be back for sure!"</p>
+                    </div>
+                    <div class="slider-item">
+                        <h3>Michael Johnson</h3>
+                        <h4>Food Critic</h4>
+                        <p>"Foodhub offers an unforgettable dining experience. The flavors are bold and unique, and every bite tells a story. Their attention to detail and commitment to excellence make them stand out from the rest. Highly recommended!"</p>
+                    </div>
+                    <div class="slider-item">
+                        <h3>Sarah Lee</h3>
+                        <h4>Event Planner</h4>
+                        <p>"I recently hosted an event at Foodhub, and it was a smashing success! The food was outstanding, and the service was impeccable. The guests couldn’t stop raving about the experience. I highly recommend it for any occasion!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+<!-- Client Reviews Section for Restaurant -->
+<div class="container1">
+    <h1>Customer Reviews</h1>
+
+    <!-- Testimonial Listings -->
+    <div class="testimonials-list">
+        <div class="testimonial1">
+            <h3>Emily Clark</h3>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <p>"Absolutely loved everything about [Restaurant Name]! The food was fresh, delicious, and beautifully presented. The service was top-notch. Can’t wait to come back!"</p>
+        </div>
+        <div class="testimonial1">
+            <h3>David Miller</h3>
+            <p class="rating">⭐⭐⭐⭐</p>
+            <p>"Great food and a lovely atmosphere. The staff was very friendly and attentive. I will definitely recommend this place to friends and family."</p>
+        </div>
+        <div class="testimonial1">
+            <h3>Susan Johnson</h3>
+            <p class="rating">⭐⭐⭐⭐⭐</p>
+            <p>"One of the best dining experiences I’ve had in a long time! Everything from the starters to the dessert was incredible. Highly recommend!"</p>
+        </div>
+        <!-- Add more testimonials as needed -->
+    </div>
+
+    <!-- Submit Testimonial -->
+    <div class="submit-testimonial">
+      <h2>Submit Your Review</h2>
+      <form id="testimonialForm">
+          <input type="text" id="name" placeholder="Your Name" required />
+          <select id="rating" required>
+              <option value="" disabled selected>Rate Us</option>
+              <option value="5">⭐⭐⭐⭐⭐ - Excellent</option>
+              <option value="4">⭐⭐⭐⭐ - Good</option>
+              <option value="3">⭐⭐⭐ - Average</option>
+              <option value="2">⭐⭐ - Poor</option>
+              <option value="1">⭐ - Very Poor</option>
+          </select>
+          <textarea id="comment" rows="4" placeholder="Your Comment" required></textarea>
+          <button type="submit" style="background-color: hsl(32, 100%, 59%); color: white; border-radius: 10px;">Submit Review</button>
+      </form>
+    </div>
+  </div>
+  <script>
+      document.getElementById('testimonialForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form submission
+  
+          // Name validation - only letters allowed, no numbers or special characters
+          var name = document.getElementById('name').value;
+          var nameRegex = /^[a-zA-Z\s]+$/;
+          if (!nameRegex.test(name)) {
+              alert("Name should only contain letters and spaces.");
+              return; // Exit if validation fails
+          }
+  
+          // Retrieve form values after validation
+          const rating = document.getElementById('rating').value;
+          const comment = document.getElementById('comment').value;
+  
+          // Create new testimonial element
+          const newTestimonial = document.createElement('div');
+          newTestimonial.className = 'testimonial1';
+          newTestimonial.innerHTML = `
+              <h3>${name}</h3>
+              <p class="rating">${'⭐'.repeat(rating)}</p>
+              <p>${comment}</p>
+          `;
+  
+          // Add new testimonial to the list
+          document.querySelector('.testimonials-list').appendChild(newTestimonial);
+  
+          // Clear the form
+          document.getElementById('testimonialForm').reset();
+          alert("Review submitted successfully!");
+      });
+  </script>
+  
+
+
+
+
+
+<footer class="footer">
+
+    <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+      <div class="container">
+
+  
+
+
+
+        <ul class="footer-list">
+          <li>
+              <p class="footer-list-title">Contact Info</p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="tel:+914012345678" class="contact-link">
+                      <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                  </a>
+              </p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="mailto:foodhub@gmail.com" class="contact-link">
+                      <i class="fas fa-envelope"></i> foodhub@gmail.com
+                  </a>
+              </p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad" class="contact-link" target="_blank">
+                      <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                  </a>
+              </p>
+          </li>
+      </ul>
+      
+
+          
+
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title">Quick Links</p>
+          </li>
+          <div style="display: flex;">
+            <div>
+              <li class="nav-item">
+                <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+              </li>
+            </div>
+            <div style="margin-left: 20px;">
+              <li class="nav-item">
+                <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+              </li>
+              <li class="nav-item">
+                <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+              </li>
+            </div>
+          </div>
+        </ul>
+        
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Opening Hours</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Saturday: 10:00-22:00</p>
+          </li>
+
+        </ul>
+
+        <div class="footer-brand" style="margin-top: -10px;">
+
+            <a href="#" class="logo">Foodhub</a>
+  
+            <p class="footer-text">
+                Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of flavors from around the world.           
+             </p>
+  
+             <ul class="social-list">
+              <li>
+                <a href="https://www.facebook.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.twitter.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.instagram.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+              </li>
+            </ul>
+            
+  
+          </div>
+
+        
+      </div>
+             
+     
+    </div>
+    <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+    <p class="copyright-text" style="text-align: center;">
+      &copy; 2024 <a href="./index.html" class="copyright-link" >Foodhub</a> All Rights Reserved.
+    </p> 
+  </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="libtest/easing/easing.min.js"></script>
+<script src="libtest/wow/wow.min.js"></script>
+
+
+<script src="libtest/counterup/counterup.min.js"></script>
+<script src="libtest/slick/slick.min.js"></script>
+<script src="jstest/main.js"></script>
+
+               </body>
+    
+    </html>

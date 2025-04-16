@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie - Supper delicious Burger in town!</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Include Font Awesome CDN in your HTML <head> section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+
+    <!-- Add Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+    <style>
+        .body1 {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            margin-bottom: -80px;
+        }
+
+
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+
+
+        .menu-item {
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            /* background-color: #fff; */
+            margin: 20px auto;
+            padding: 20px;
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+            border-radius: 8px;
+            max-width: 1000px;
+            gap: 0px;
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            margin-left: -100px;
+        }
+
+        .main-image img {
+            width: 380px;
+            height: 320px;
+            border-radius: 8px;
+            margin-bottom: 120px;
+            margin-left: 100px;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            /* justify-content: space-between; */
+            width: 600px;
+            max-width: 600px;
+            margin-left: 30px;
+            gap: 10px;
+        }
+
+        .thumbnail-images img {
+            max-width: 30%;
+            height: 150px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail-images img:hover {
+            transform: scale(1.05);
+        }
+
+
+        .item-details {
+            max-width: 450px;
+            padding-left: 20px;
+        }
+
+        .item-details h2 {
+            font-size: 32px;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+
+        .ingredients-list {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .body1 .ingredients-list ul {
+            list-style-type: disc;
+            margin-left: 0px;
+            list-style-type: circle;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.5;
+            width: 550px;
+            
+        }
+    </style>
+
+</head>
+
+<body id="top">
+
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header>
+        <div class="container">
+
+            <h1 style="display: flex; align-items: center;">
+                <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                    <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+                </a>
+            </h1>
+
+
+
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+
+                    <li class="nav-item">
+                        <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./menu.html" class="navbar-link active" data-nav-link>Menu</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="./review.html" class="navbar-link" data-nav-link>Reviews</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="./event.html" class="navbar-link" data-nav-link>News & Events</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./FAQ.html" class="navbar-link" data-nav-link>FAQ's</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a>
+
+            <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+            </button>
+        </div>
+
+        </div>
+    </header>
+    <br><br><br>
+    <div class="body1">
+        <section class="menu-item">
+            <div class="item-details">
+                <h2>Quinoa Salad</h2>
+                <p class="price"> Price : ₹150</p>
+                <div class="ingredients-list">
+                    <strong style="font-size: 20px;">Ingredients:</strong>
+                    <ul>
+                        <li>Quinoa</li>
+                        <li>Cherry tomatoes</li>
+                        <li>Cucumber</li>
+                        <li>Red onion</li>
+                        <li>Bell peppers</li>
+                        <li>Olive oil</li>
+                        <li>Lemon juice</li>
+                        <li>Fresh herbs (parsley, mint)</li>
+                    </ul>
+                </div>
+                <br>
+                <strong style="font-size: 20px; margin-top: 50px;">Description:</strong> 
+                <p class="description" style="width: 900px;">
+                    Quinoa salad is a refreshing and nutritious dish, packed with protein and fiber. 
+                    This vibrant salad combines fluffy quinoa with fresh vegetables, creating a colorful and delicious meal. 
+                    Tossed in a light lemon and olive oil dressing, it's perfect as a side or a main dish. 
+                    Enjoy this wholesome salad chilled, making it an ideal choice for a healthy lunch or a light dinner.
+                </p>
+            </div>
+            <div class="item-photo">
+                <div class="image-gallery">
+                    <!-- Top image -->
+                    <div class="main-image">
+                        <img id="mainImage" src="1761.jpg" alt="Quinoa Salad Image">
+                    </div>
+    
+                    <!-- Bottom images -->
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    
+    
+    
+
+
+
+    <br>
+
+
+
+    <footer class="footer">
+
+        <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+            <div class="container">
+
+
+
+
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title">Contact Info</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="tel:+914012345678" class="contact-link">
+                                <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="mailto:foodhub@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> foodhub@gmail.com
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad"
+                                class="contact-link" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+
+
+
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title">Quick Links</p>
+                    </li>
+                    <div style="display: flex;">
+                        <div>
+                            <li class="nav-item">
+                                <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+                            </li>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <li class="nav-item">
+                                <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-list-title">Opening Hours</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Saturday: 10:00-22:00</p>
+                    </li>
+
+                </ul>
+
+                <div class="footer-brand" style="margin-top: -10px;">
+
+                    <a href="#" class="logo">Foodhub</a>
+
+                    <p class="footer-text">
+                        Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of
+                        flavors from around the world.
+                    </p>
+
+                    <ul class="social-list">
+                        <li>
+                            <a href="https://www.facebook.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.twitter.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-twitter"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-pinterest"></ion-icon>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+            <p class="copyright-text" style="text-align: center;">
+                &copy; 2024 <a href="./index.html" class="copyright-link">Foodhub</a> All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+    <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+        <ion-icon name="chevron-up"></ion-icon>
+    </a>
+
+
+
+
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="./assets/js/script.js" defer></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        function changeImage(imageSrc) {
+            document.getElementById('mainImage').src = imageSrc;
+        }
+    </script>
+
+</body>
+
+</html>

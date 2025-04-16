@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Foodhub</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playball&display=swap" rel="stylesheet">
+
+        
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="event.css.css" rel="stylesheet">
+
+        
+
+        
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+   
+   <!-- Include Font Awesome CDN in your HTML <head> section -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  
+  <!-- Add Bootstrap Icons CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+
+ 
+    </head>
+<style>
+    
+/*** Blog Start ***/
+.blog-item {
+    position: relative;
+}
+
+.blog-item img {
+    transition: 0.5s;
+}
+
+.blog-item:hover img {
+    transform: scale(1.3)
+}
+
+.blog-item .blog-content {
+    position: relative;
+    transform: translateY(-50%);
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+}
+
+.blog-item .blog-content a.btn h5 {
+    transition: 0.5s;
+}
+
+.blog-item:hover .blog-content a.btn h5 {
+    color: var(--bs-primary) !important;
+}
+
+
+
+/*** Blog End ***/
+
+
+/*** Events Start ***/
+.event .tab-class .nav-item a.active {
+    background: var(--bs-primary) !important;
+}
+
+.event .event-img .event-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(253, 253, 252, 0.7);
+    border-radius: 8px;
+    transition: 0.5s;
+    opacity: 0;
+    z-index: 1;
+}
+
+.event .event-img:hover .event-overlay {
+    opacity: 1;
+}
+/*** Events End ***/
+
+
+
+
+</style>
+<body id="top">
+
+    <!-- 
+      - #HEADER
+    -->
+  
+    <header class="header" data-header>
+      <div class="container">
+  
+        <h1 style="display: flex; align-items: center;">
+          <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+            <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+          </a>
+        </h1>
+        
+  
+        
+  
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+  
+            <li class="nav-item">
+              <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./menu.html" class="navbar-link" data-nav-link>Menu</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+            </li>
+  
+             
+            <li class="nav-item">
+              <a href="./review.html" class="navbar-link" data-nav-link>Reviews</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a href="./event.html" class="navbar-link active" data-nav-link>News & Events</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./FAQ.html" class="navbar-link" data-nav-link>FAQ's</a>
+            </li>
+  
+          </ul>
+        </nav>
+  
+  
+         <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a> 
+  
+          <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
+          </button>
+        </div>
+  
+      </div>
+    </header>
+
+
+<br>
+<br>
+<br>
+<br>
+
+        <!-- Blog Start -->
+        <div class="container-fluid blog py-6">
+    <div class="container">
+        <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+            
+            <h1 class="display-5 mb-5" style="color: black;">Restaurant News: What's Cooking in the Culinary World?</h1>
+        </div>
+       
+        <div class="row gx-4 justify-content-center">
+            <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s">
+                <div class="blog-item">
+                    <div class="overflow-hidden rounded">
+                        <img src="img/blog-1.jpg" class="img-fluid w-100" alt="">
+                    </div>
+                    <div class="blog-content mx-4 d-flex rounded bg-light">
+                        <div class="text-dark bg-primary rounded-start">
+                            <div class="h-100 p-3 d-flex flex-column justify-content-center text-center">
+                                <p class="fw-bold mb-0">16</p>
+                                <p class="fw-bold mb-0">Sep</p>
+                            </div>
+                        </div>
+                        <a class="h5 lh-base my-auto h-100 p-3">Discover New Flavors: Explore the world of culinary wonders with our expert tips on flavor enhancement, helping you elevate every dish.</a>
+                    </div>
+                    <p class="px-3 mt-2">.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.3s">
+                <div class="blog-item">
+                    <div class="overflow-hidden rounded">
+                        <img src="img/blog-2.jpg" class="img-fluid w-100" alt="">
+                    </div>
+                    <div class="blog-content mx-4 d-flex rounded bg-light">
+                        <div class="text-dark bg-primary rounded-start">
+                            <div class="h-100 p-3 d-flex flex-column justify-content-center text-center">
+                                <p class="fw-bold mb-0">19</p>
+                                <p class="fw-bold mb-0">oct</p>
+                            </div>
+                        </div>
+                        <a class="h5 lh-base my-auto h-100 p-3">How to Pair Wines with Dishes: Wine pairing can elevate your meal experience. Learn the art of wine to your favorite dishes.</a>
+                    </div>
+                    <p class="px-3 mt-2"></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.5s">
+                <div class="blog-item">
+                    <div class="overflow-hidden rounded">
+                        <img src="img/blog-3.jpg" class="img-fluid w-100" alt="">
+                    </div>
+                    <div class="blog-content mx-4 d-flex rounded bg-light">
+                        <div class="text-dark bg-primary rounded-start">
+                            <div class="h-100 p-3 d-flex flex-column justify-content-center text-center">
+                                <p class="fw-bold mb-0">11</p>
+                                <p class="fw-bold mb-0">Nov</p>
+                            </div>
+                        </div>
+                        <a class="h5 lh-base my-auto h-100 p-3">Exploring Global Cuisines: Join us on a flavorful journey as we explore the spices, textures, and unique dishes from around the world.</a>
+                    </div>
+                    <p class="px-3 mt-2">J</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Blog End -->
+ <!-- Events Start -->
+ <div class="container-fluid event py-6">
+    <div class="container">
+        <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+            
+            <h1 class="display-5 mb-5" style="color: black;">Our Social & Professional Events</h1>
+        </div>
+       
+        <div class="tab-content">
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4">
+                    <div class="col-lg-12">
+                        <div class="row g-4">
+                            <!-- Wine Tasting Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.1s">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-1.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto" style="margin-left: 80px; color: #000;">Wine Tasting</h4>
+                                        <p style="margin-left: 10px; margin-right: 10px; margin-top: 40px;color: #000;">Join us for an exquisite evening of wine tasting, featuring fine wines from around the world.</p>
+                                        
+                                        <a href="event1.html" class="event-link" style="color: black; margin-left: 60px; margin-top: 20px;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cooking Class Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.3s">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-2.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto" style="text-align: center; color: #000; margin-left: 80px;">Cooking Class</h4>
+                                        <p style="text-align: center; margin-top: 40px; color: #000;">Learn the secrets of gourmet cooking with our exclusive hands-on cooking class experience.</p>
+                                        <br>
+                                        <a href="event2.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Jazz Dinner Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.5s">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-3.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto"  style="text-align: center; color: #000; margin-left: 80px;">Jazz Dinner</h4>
+                                        <p style="text-align: center; margin-top: 40px; color: #000;">Enjoy a night of live jazz music paired with a gourmet dinner.</p>
+                                        <br>
+                                        <a href="event3.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Buffet Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.7s">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-4.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto"  style="text-align: center; color: #000; margin-left: 40px;">Valentine's Day Dinner</h4>
+                                        <p  style="text-align: center; margin-top: 40px; color: #000;">Celebrate love with an intimate candlelit dinner featuring a specially crafted Valentine's menu.</p>
+                                       <br>
+                                        <a href="event4.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                          
+
+                            <!-- Cocktail Masterclass Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.1s" style="margin-top: 30px;">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-5.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto"  style="text-align: center; color: #000; margin-left: 60px;">Cocktail Masterclass</h4>
+                                        <p  style="text-align: center; margin-top: 40px; color: #000;">Learn the art of mixology from expert bartenders in this fun, interactive class.</p>
+                                        <br>
+                                        <a href="event5.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Seafood Night Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.3s" style="margin-top: 30px;">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-6.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto"  style="text-align: center; color: #000; margin-left: 80px;">Seafood Night</h4>
+                             <p style="text-align: center; margin-top: 40px; color: #000;">Enjoy a wide variety of fresh seafood at our special Seafood Night event.</p>
+                                   <br>
+                             <a href="event6.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Oktoberfest Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.5s" style="margin-top: 30px;">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-7.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto"  style="text-align: center; color: #000; margin-left: 80px;">Oktoberfest</h4>
+                                        <p  style="text-align: center; margin-top: 40px; color: #000;">Celebrate Oktoberfest with German beers, food, and live music.</p>
+                                        <br>
+                                        <a href="event7.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- New Year's Eve Party Event -->
+                            <div class="col-md-6 col-lg-3 wow bounceInUp" data-wow-delay="0.7s" style="margin-top: 30px;">
+                                <div class="event-img position-relative">
+                                    <img class="img-fluid rounded w-100" src="img/event-8.jpg" alt="">
+                                    <div class="event-overlay d-flex flex-column p-4">
+                                        <h4 class="me-auto"  style="text-align: center; color: #000; margin-left: 50px;">New Year's Eve Party</h4>
+                                        <p  style="text-align: center; margin-top: 40px; color: #000;">Ring in the New Year with live music, food, and a fireworks display.</p>
+                                        <br>
+                                        <a href="event8.html" class="event-link" style="color: black; text-align: center;"><b>View Event Details</b></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+
+<!-- Events End -->
+<footer class="footer">
+
+    <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+      <div class="container">
+
+  
+
+
+
+        <ul class="footer-list">
+          <li>
+              <p class="footer-list-title">Contact Info</p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="tel:+914012345678" class="contact-link">
+                      <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                  </a>
+              </p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="mailto:foodhub@gmail.com" class="contact-link">
+                      <i class="fas fa-envelope"></i> foodhub@gmail.com
+                  </a>
+              </p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad" class="contact-link" target="_blank">
+                      <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                  </a>
+              </p>
+          </li>
+      </ul>
+      
+
+          
+
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title">Quick Links</p>
+          </li>
+          <div style="display: flex;">
+            <div>
+              <li class="nav-item">
+                <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+              </li>
+            </div>
+            <div style="margin-left: 20px;">
+              <li class="nav-item">
+                <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+              </li>
+              <li class="nav-item">
+                <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+              </li>
+            </div>
+          </div>
+        </ul>
+        
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Opening Hours</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Saturday: 10:00-22:00</p>
+          </li>
+
+        </ul>
+
+        <div class="footer-brand" style="margin-top: -10px;">
+
+            <a href="#" class="logo">Foodhub</a>
+  
+            <p class="footer-text">
+                Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of flavors from around the world.           
+             </p>
+  
+             <ul class="social-list">
+              <li>
+                <a href="https://www.facebook.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.twitter.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.instagram.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+              </li>
+            </ul>
+            
+  
+          </div>
+
+        
+      </div>
+             
+     
+    </div>
+    <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+    <p class="copyright-text" style="text-align: center;">
+      &copy; 2024 <a href="./index.html" class="copyright-link" >Foodhub</a> All Rights Reserved.
+    </p> 
+  </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+
+
+    </body>
+
+</html>

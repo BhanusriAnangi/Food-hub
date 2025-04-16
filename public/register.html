@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodhub</title>
+    <link rel="stylesheet" href="style.css">
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.brand {
+    background-color: #ffc107;
+    color: white;
+    padding: 5px 10px;
+}
+
+.buzz {
+    background-color: #ffc107;
+    color: black;
+    padding: 5px 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff8d29;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #ff8d29;
+}
+
+.terms {
+    text-align: left;
+    margin: 10px 0;
+    margin-bottom: 20px;
+    
+    
+}
+
+.terms label {
+    margin-left: 30px;
+  
+}
+
+.login-link, .register-link {
+    margin-top: 10px;
+}
+
+.login-link a, .register-link a {
+    color: #ff8d29;
+    text-decoration: none;
+}
+
+.terms {
+    display: flex;
+    align-items: center; /* Aligns the checkbox and label vertically */
+    margin-top: 20px; /* Adds some space above the checkbox */
+}
+
+.terms input[type="checkbox"] {
+    margin-right: 10px; /* Adds space between the checkbox and label */
+}
+
+.terms label {
+    font-size: 16px; /* Adjusts the label font size */
+    color: #333; /* Dark text color */
+}
+
+/* Add extra space below the terms if needed */
+.terms {
+    margin-bottom: 20px;
+}
+
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="display: flex; align-items: center;">
+            <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+              <img src="./icon.png" alt="Foodhub Logo" style="height: 40px; width: auto; margin-left: 10px;">
+              <span style="font-size: 32px; font-weight: bold; color: #ff8d29; margin-left: 10px;">Foodhub</span>
+            </a>
+        </h1>
+        
+        <!-- Registration Form -->
+        <form id="register-form">
+            <input type="text" placeholder="Username" name="username" id="username" required>
+            <input type="email" placeholder="Email" name="email" id="email" required>
+            <input type="password" placeholder="Password" name="password" id="password" required>
+            <div class="terms">
+                <div>
+                    <input type="checkbox" id="terms" required>
+                </div>
+                <div>
+                    <label for="terms">Agree to the terms and policy</label>
+                </div>
+            </div>
+            
+            <button type="submit">Register</button>
+            <p class="login-link">Already have an account? <a href="./login.html">Sign In</a></p>
+        </form>
+    </div>
+    
+    <!-- Validation and Form Handling Script -->
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            // Username validation - only letters allowed, no numbers or special characters
+            var username = document.getElementById('username').value;
+            var usernameRegex = /^[a-zA-Z]+$/;
+            if (!usernameRegex.test(username)) {
+                alert("Username should only contain letters.");
+                return;
+            }
+    
+            // Email validation
+            var email = document.getElementById('email').value;
+            if (!/\S+@\S+\.\S+/.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+    
+            // Password validation - ensure it's not empty
+            var password = document.getElementById('password').value;
+            if (!password) {
+                alert("Please enter a password.");
+                return;
+            }
+    
+            // Terms acceptance validation
+            var termsAccepted = document.getElementById('terms').checked;
+            if (!termsAccepted) {
+                alert("You must agree to the terms and policy.");
+                return;
+            }
+    
+            // If all validations pass, show success message and redirect
+            alert("Registration successful! Welcome to Foodhub.");
+            document.getElementById('register-form').reset(); // Reset form after submission
+            window.location.href = './index.html'; // Redirect to home page (or login page)
+        });
+    </script>
+    
+</body>
+</html>

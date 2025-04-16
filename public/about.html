@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Foodhub</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="cssabout/bootstrapabout.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="cssabout/styleabout.css" rel="stylesheet">
+
+
+
+        <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+   
+   <!-- Include Font Awesome CDN in your HTML <head> section -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  
+  <!-- Add Bootstrap Icons CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+<style>
+  .cardbody {
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+        position: relative;
+        display: flex;
+        font-size: 14px;
+    }
+
+
+
+    /* Main heading for card's front cover */
+    .card-front__heading {
+        font-size: 2.5rem;
+        margin-top: 0.25rem;
+        background: rgba(255, 255, 255, 0.1);
+
+    }
+
+    /* Main heading for inside page */
+    .inside-page__heading {
+        padding-bottom: 1rem;
+        width: 100%;
+    }
+
+    /* Mixed */
+
+    /* For both inside page's main heading and 'view me' text on card front cover */
+    .inside-page__heading,
+    .card-front__text-view {
+        font-size: 2.3rem;
+        font-weight: 800;
+        margin-top: 0.2rem;
+        
+    }
+
+    .inside-page__heading--city,
+    .card-front__text-view--city {
+        color: #2aaac1;
+        font-size: xx-large;
+    }
+
+    .inside-page__heading--ski,
+    .card-front__text-view--ski {
+        color: #2aaac1;
+        font-size: xx-large;
+    }
+
+
+    /* Front cover */
+
+    .card-front__tp {
+        color: #fafbfa;
+        
+    }
+
+    /* For pricing text on card front cover */
+
+
+    /* Back cover */
+
+    /* For inside page's body text */
+    .inside-page__text {
+        color: #333;
+    }
+
+    /* Icons ===========================================*/
+
+    .card-front__icon {
+        fill: #fafbfa;
+        font-size: 3vw;
+        height: 3.25rem;
+        margin-top: -0.5rem;
+        width: 3.25rem;
+        border-radius: 10px;
+
+    }
+
+
+
+    /* Layout Structure=========================================*/
+
+    .main {
+        background: linear-gradient(to bottom right, #eee8dd, #e3d9c6);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+    }
+
+    /* Container to hold all cards in one place */
+    .card-area {
+        align-items: center;
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100%;
+        justify-content: space-evenly;
+        padding: 1rem;
+        border-radius: 10px;
+        /* background: rgba(255, 255, 255, 0.1); */
+
+    }
+
+    /* Card ============================================*/
+
+    /* Area to hold an individual card */
+    .card-section {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        width: 100%;
+        border-radius: 10px;
+
+    }
+
+    /* A container to hold the flip card and the inside page */
+    .card {
+        background-color: rgba(0, 0, 0, 0.05);
+        box-shadow: -0.1rem 1.7rem 6.6rem -3.2rem rgba(0, 0, 0, 0.5);
+        height: 25rem;
+        position: relative;
+        transition: all 1s ease;
+        width: 25rem;
+        border-radius: 10px;
+
+    }
+
+    /* Flip card - covering both the front and inside front page */
+
+    /* An outer container to hold the flip card. This excludes the inside page */
+    .flip-card {
+        height: 25rem;
+        perspective: 100rem;
+        position: absolute;
+        right: 0;
+        transition: all 1s ease;
+        visibility: hidden;
+        width: 25rem;
+        z-index: 100;
+        border-radius: 10px;
+
+    }
+
+    /* The outer container's visibility is set to hidden. This is to make everything within the container NOT set to hidden  */
+    /* This is done so content in the inside page can be selected */
+    .flip-card>* {
+        visibility: visible;
+        
+    }
+
+    /* An inner container to hold the flip card. This excludes the inside page */
+    .flip-card__container {
+        height: 100%;
+        position: absolute;
+        right: 0;
+        transform-origin: left;
+        transform-style: preserve-3d;
+        transition: all 1s ease;
+        width: 100%;
+        border-radius: 10px;
+
+    }
+    
+
+    .card-front,
+    .card-back {
+        backface-visibility: hidden;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        border-radius: 10px;
+
+    }
+
+    /* Styling for the front side of the flip card */
+
+    /* container for the front side */
+    .card-front {
+        background-color: #080808;
+        height: 25rem;
+        width: 25rem;
+        border-radius: 10px;
+
+    }
+
+    /* Front side's top section */
+    .card-front__tp {
+        align-items: center;
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
+        display: flex;
+        flex-direction: column;
+        height: 12rem;
+        justify-content: center;
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+
+    .card-front__tp--city {
+        background: linear-gradient(to bottom, hsl(28, 77%, 62%), hsl(28, 100%, 58%));
+        margin-top: -50px;
+       
+        
+       
+
+    }
+
+    .card-front__tp--ski {
+        background: linear-gradient(to bottom, #47c2d7, #279eb2);
+       
+    }
+
+
+    /* Front card's bottom section */
+    .card-front__bt {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+
+    }
+
+    /* Styling for the back side of the flip card */
+
+    .card-back {
+        background-color: #fafbfa;
+        transform: rotateY(180deg);
+        border-radius: 10px;
+        border-radius: 10px;
+        height: 350px;
+        margin-top: -45px;
+    }
+
+    /* Specifically targeting the <video> element */
+    .video__container {
+        clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%);
+        height: auto;
+        min-height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+    /* Inside page */
+
+    .inside-page {
+        background-color: #fafbfa;
+        box-shadow: inset 20rem 0px 5rem -2.5rem rgba(0, 0, 0, 0.25);
+        height: 100%;
+        padding: 1rem;
+        position: absolute;
+        right: 0;
+        transition: all 1s ease;
+        width: 25rem;
+        z-index: 1;
+        border-radius: 10px;
+
+    }
+
+    .inside-page__container {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Functionality ====================================*/
+
+    /* This is to keep the card centered (within its container) when opened */
+    .card:hover {
+        box-shadow: -0.1rem 1.7rem 6.6rem -3.2rem rgba(0, 0, 0, 0.75);
+        width: 30rem;
+      
+    }
+
+    /* When the card is hovered, the flip card container will rotate */
+    .card:hover .flip-card__container {
+        transform: rotateY(-180deg);
+       
+    }
+
+    /* When the card is hovered, the shadow on the inside page will shrink to the left */
+    .card:hover .inside-page {
+        box-shadow: inset 1rem 0px 5rem -2.5rem rgba(0, 0, 0, 0.1);
+        
+    }
+
+
+
+   
+
+    
+
+    .circle-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .square-image {
+            width: 400px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .square-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+</style>
+ <style>
+    
+        .cards-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            perspective: 1000px;
+            width: 300px;
+            height: 400px;
+            margin-left: 250px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-front {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #ddd;
+        }
+
+        .card-front h3 {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .card-back {
+            background-color: #ff8d29;
+            color: white;
+            transform: rotateY(180deg);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+ </style>
+    </head>
+
+    <body id="top">
+
+        <!-- 
+          - #HEADER
+        -->
+      
+        <header class="header" data-header>
+          <div class="container">
+      
+            <h1 style="display: flex; align-items: center;">
+              <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+              </a>
+            </h1>
+            
+      
+            
+      
+            <nav class="navbar" data-navbar>
+              <ul class="navbar-list">
+      
+                <li class="nav-item">
+                  <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+                </li>
+      
+                <li class="nav-item">
+                  <a href="./about.html" class="navbar-link active" data-nav-link>About</a>
+                </li>
+      
+                <li class="nav-item">
+                  <a href="./menu.html" class="navbar-link" data-nav-link>Menu</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                  <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+                </li>
+      
+                 
+                <li class="nav-item">
+                  <a href="./review.html" class="navbar-link" data-nav-link>Reviews</a>
+                </li>
+                
+                
+                <li class="nav-item">
+                  <a href="./event.html" class="navbar-link" data-nav-link>News & Events</a>
+                </li>
+      
+                <li class="nav-item">
+                  <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
+                </li>
+      
+                <li class="nav-item">
+                  <a href="./FAQ.html" class="navbar-link" data-nav-link>FAQ's</a>
+                </li>
+      
+              </ul>
+            </nav>
+      
+      
+             <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a> 
+      
+              <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+              </button>
+            </div>
+      
+          </div>
+        </header>
+        <br>
+        <br>
+        <br>
+        
+
+
+        <!-- About Satrt -->
+        <div class="container-fluid py-6">
+          <div class="container">
+              <div class="row g-5 align-items-center">
+                  <div class="col-lg-5 wow bounceInUp" data-wow-delay="0.1s">
+                    
+                  
+                <div class="circle-image" style="margin-left: -40px; margin-top: 20px;">
+                  <img src="img/about.jpg" alt="Circle Image">
+              </div>
+                  </div>
+                  <div class="col-lg-7 wow bounceInUp" data-wow-delay="0.3s">
+                    <p class="mb-4" style="font-size: 35px; color: hsl(28, 88%, 45%); margin-top: 50px;"><b>About Us</b></p>
+                      <p class="mb-4" style="font-size: 35px; color: #000;">Serving Excellence for Over 20 Years</p>
+                      <p class="mb-4">Established in 2003, our restaurant has become a cornerstone of fine dining in the city. With a dedication to quality, fresh ingredients, and exceptional service, we’ve been trusted by over 200+ satisfied clients. What started as a family-owned business has grown into a go-to destination for locals and tourists alike. Our history is rich with tradition, yet we continuously innovate to meet the evolving tastes of our guests.</p>
+                      <p class="mb-4">From the moment you step through our doors, you are treated like family. Our culinary team takes pride in creating mouth-watering dishes that blend classic recipes with modern techniques. We invite you to indulge in a dining experience that reflects the heart and soul of our restaurant’s journey.</p>
+                      <div class="row g-4 text-dark mb-5">
+                          <div  class="col-sm-6">
+                              <i class="fas fa-share text-primary me-2"></i>Fresh and Locally Sourced Ingredients
+                          </div>
+                          <div class="col-sm-6">
+                              <i class="fas fa-share text-primary me-2"></i>Personalized Customer Service
+                          </div>
+                          <div class="col-sm-6">
+                              <i class="fas fa-share text-primary me-2"></i>Specialized in Custom Menus
+                          </div>
+                          <div class="col-sm-6">
+                              <i class="fas fa-share text-primary me-2"></i>Exquisite Dining Experience
+                          </div>
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+        <!-- About End -->
+
+
+        <p class="mb-4" style="font-size: 35px; color: hsl(28, 88%, 45%); margin-top: 50px; text-align: center;"><b>Mission & Vission</b></p>
+        <br>
+        
+        <div class="cards-container">
+          <!-- Card 1 -->
+          <div class="card">
+              <div class="card-inner">
+                  <div class="card-front" style="background-image: url('img/event-2.jpg');">
+                      <p style="font-size: 30px; color: #ff8d29;margin-top:-280px;">Mission</p>
+                  </div>
+                  <div class="card-back">
+                      <p>At Foodhub, our mission is to create unforgettable dining experiences that bring people together. We are passionate about serving fresh, locally sourced ingredients, meticulously prepared to offer the finest flavors in every bite. Our team is dedicated to providing exceptional service that makes every guest feel valued and welcome. We strive to be a place where family, friends, and food lovers can gather and share memorable moments.</p>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Card 2 -->
+          <div class="card">
+              <div class="card-inner">
+                  <div class="card-front" style="background-image: url('img/blog-3.jpg');">
+                      <p style="font-size: 30px; color: #ff8d29;margin-top:-280px;">Vission</p>
+                  </div>
+                  <div class="card-back">
+                      <p>We envision a restaurant that is more than just a place to eat – it is a cornerstone of the community. At Foodhub, we aspire to be recognized for culinary innovation, offering a menu that delights and surprises our guests with every visit. We are committed to fostering a welcoming environment where every guest, regardless of background, feels at home. Our vision includes expanding our reach while maintaining our roots in sustainable .</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+
+
+        <!-- Team Start -->
+        <div class="container-fluid team py-6">
+            <div class="container">
+                <div class="text-center wow bounceInUp" data-wow-delay="0.1s">
+                  <p class="mb-4" style="font-size: 35px; color: hsl(28, 88%, 45%); margin-top: 50px;"><b>Our Team</b></p>
+                    <p class="mb-4" style="font-size: 35px; color: #000;">We have experienced chef Team</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.1s">
+                        <div class="team-item rounded">
+                            <img class="img-fluid rounded-top " src="img/team-1.jpg" alt="">
+                            <div class="team-content text-center py-3 bg-dark rounded-bottom">
+                                <h4 class="text-primary">Henry</h4>
+                                <p class="text-white mb-0">Decoration Chef</p>
+                            </div>
+                            <div class="team-icon d-flex flex-column justify-content-center m-4">
+                              <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.3s">
+                        <div class="team-item rounded">
+                            <img class="img-fluid rounded-top " src="img/team-2.jpg" alt="">
+                            <div class="team-content text-center py-3 bg-dark rounded-bottom">
+                                <h4 class="text-primary">Jemes Born</h4>
+                                <p class="text-white mb-0">Executive Chef</p>
+                            </div>
+                            <div class="team-icon d-flex flex-column justify-content-center m-4">
+                              <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.5s">
+                        <div class="team-item rounded">
+                            <img class="img-fluid rounded-top " src="img/team-3.jpg" alt="">
+                            <div class="team-content text-center py-3 bg-dark rounded-bottom">
+                                <h4 class="text-primary">Martin Hill</h4>
+                                <p class="text-white mb-0">Kitchen Porter</p>
+                            </div>
+                            <div class="team-icon d-flex flex-column justify-content-center m-4">
+                              <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.7s">
+                        <div class="team-item rounded">
+                            <img class="img-fluid rounded-top " src="img/team-4.jpg" alt="">
+                            <div class="team-content text-center py-3 bg-dark rounded-bottom">
+                                <h4 class="text-primary">Adam Smith</h4>
+                                <p class="text-white mb-0">Head Chef</p>
+                            </div>
+                            <div class="team-icon d-flex flex-column justify-content-center m-4">
+                              <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                                <a class="share-link btn btn-primary btn-md-square rounded-circle mb-2" href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+
+
+        <div class="awards-certifications" style="width: 1200px; margin-left: 100px;">
+          <p class="mb-4" style="font-size: 35px; color: hsl(28, 88%, 45%); margin-top: 50px;text-align: center;"><b>Achievements & Awards</b></p>
+          <div class="row">
+              <!-- Achievement 1 -->
+              <div class="col-lg-3 col-md-6">
+                  <div class="achievement-item">
+                      <div class="achievement-icon">
+                          <i class="flaticon-trophy"></i>
+                          <img src="award1.jpg" alt="Best Restaurant 2021" style="height: 200px;width: 250px;">
+                      </div>
+                      <div class="achievement-text">
+                          <p class="mb-4" style="font-size: 25px; color: hsl(0, 0%, 6%); margin-top: 20px;">Best Restaurant 2021</p>
+                          <p class="mb-4" style="font-size: 15px; color: hsl(0, 0%, 6%);margin-top: -10px;">Awarded by Culinary Excellence</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- Achievement 2 -->
+              <div class="col-lg-3 col-md-6">
+                  <div class="achievement-item">
+                      <div class="achievement-icon">
+                          <i class="flaticon-trophy"></i>
+                          <img src="award2.jpg" alt="Most Innovative Cuisine 2022" style="height: 200px;width: 250px;">
+                      </div>
+                      <div class="achievement-text">
+                        <p class="mb-4" style="font-size: 25px; color: hsl(0, 0%, 6%); margin-top: 20px;">Most Cuisine 2022</p>
+                        <p class="mb-4" style="font-size: 15px; color: hsl(0, 0%, 6%);margin-top: -10px;">Awarded by Gourmet Food Review</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- Achievement 3 -->
+              <div class="col-lg-3 col-md-6">
+                  <div class="achievement-item">
+                      <div class="achievement-icon">
+                          <i class="flaticon-trophy"></i>
+                          <img src="award3.jpg" alt="Best Service 2023" style="height: 200px;width: 250px;">
+                      </div>
+                      <div class="achievement-text">
+                        <p class="mb-4" style="font-size: 25px; color: hsl(0, 0%, 6%); margin-top: 20px;">Best Service 2023</h3>
+                          <p class="mb-4" style="font-size: 15px; color: hsl(0, 0%, 6%);margin-top: -10px;">Awarded by Hospitality Awards</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- Achievement 4 -->
+              <div class="col-lg-3 col-md-6">
+                  <div class="achievement-item">
+                      <div class="achievement-icon">
+                          <i class="flaticon-trophy"></i>
+                          <img src="award4.jpg" alt="Top Family Restaurant 2024" style="height: 200px;width: 250px;">
+                      </div>
+                      <div class="achievement-text">
+                        <p class="mb-4" style="font-size: 22px; color: hsl(0, 0%, 6%); margin-top: 20px;">Top Family Restaurant 2024</p>
+                        <p class="mb-4" style="font-size: 15px; color: hsl(0, 0%, 6%);margin-top: -10px;">Awarded by Family Dining Magazine</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- Add more achievements as needed -->
+          </div>
+      </div>
+      
+
+        <footer class="footer">
+
+            <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+              <div class="container">
+        
+          
+        
+        
+        
+                <ul class="footer-list">
+                  <li>
+                      <p class="footer-list-title">Contact Info</p>
+                  </li>
+                  
+                  <li>
+                      <p class="footer-list-item">
+                          <a href="tel:+914012345678" class="contact-link">
+                              <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                          </a>
+                      </p>
+                  </li>
+                  
+                  <li>
+                      <p class="footer-list-item">
+                          <a href="mailto:foodhub@gmail.com" class="contact-link">
+                              <i class="fas fa-envelope"></i> foodhub@gmail.com
+                          </a>
+                      </p>
+                  </li>
+                  
+                  <li>
+                      <p class="footer-list-item">
+                          <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad" class="contact-link" target="_blank">
+                              <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                          </a>
+                      </p>
+                  </li>
+              </ul>
+              
+        
+                  
+        
+                <ul class="footer-list">
+                  <li>
+                    <p class="footer-list-title">Quick Links</p>
+                  </li>
+                  <div style="display: flex;">
+                    <div>
+                      <li class="nav-item">
+                        <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+                      </li>
+                
+                      <li class="nav-item">
+                        <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+                      </li>
+                
+                      <li class="nav-item">
+                        <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+                      </li>
+                
+                      <li class="nav-item">
+                        <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+                      </li>
+                
+                      <li class="nav-item">
+                        <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+                      </li>
+                    </div>
+                    <div style="margin-left: 20px;">
+                      <li class="nav-item">
+                        <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+                      </li>
+                
+                      <li class="nav-item">
+                        <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+                      </li>
+                
+                      <li class="nav-item">
+                        <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+                      </li>
+                    </div>
+                  </div>
+                </ul>
+                
+        
+                <ul class="footer-list">
+        
+                  <li>
+                    <p class="footer-list-title">Opening Hours</p>
+                  </li>
+        
+                  <li>
+                    <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+                  </li>
+        
+                  <li>
+                    <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+                  </li>
+        
+                  <li>
+                    <p class="footer-list-item">Saturday: 10:00-22:00</p>
+                  </li>
+        
+                </ul>
+        
+                <div class="footer-brand" style="margin-top: -10px;">
+        
+                    <a href="#" class="logo">Foodhub</a>
+          
+                    <p class="footer-text">
+                        Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of flavors from around the world.           
+                     </p>
+          
+                     <ul class="social-list">
+                      <li>
+                        <a href="https://www.facebook.com" class="social-link" target="_blank">
+                          <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="https://www.twitter.com" class="social-link" target="_blank">
+                          <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="https://www.instagram.com" class="social-link" target="_blank">
+                          <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                          <ion-icon name="logo-pinterest"></ion-icon>
+                        </a>
+                      </li>
+                    </ul>
+                    
+          
+                  </div>
+        
+                
+              </div>
+                     
+             
+            </div>
+            <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+            <p class="copyright-text" style="text-align: center;">
+              &copy; 2024 <a href="./index.html" class="copyright-link" >Foodhub</a> All Rights Reserved.
+            </p> 
+          </div>
+          </footer>
+        
+        
+        
+        
+        
+          <!-- 
+            - #BACK TO TOP
+          -->
+        
+          <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+            <ion-icon name="chevron-up"></ion-icon>
+          </a>
+        
+        
+        
+        
+        
+          <!-- 
+            - custom js link
+          -->
+          <script src="./assets/js/script.js" defer></script>
+        
+          <!-- 
+            - ionicon link
+          -->
+          <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+          <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        
+          
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+           </body>
+</html>

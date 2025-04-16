@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Foodhub</title>
+    <link rel="stylesheet" href="style.css">
+   <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+}
+
+.container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.brand {
+    background-color: #ffc107;
+    color: white;
+    padding: 5px 10px;
+}
+
+.buzz {
+    background-color: #ffc107;
+    color: black;
+    padding: 5px 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff8d29;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #ff8d29;
+}
+
+.terms {
+    text-align: left;
+    margin: 10px 0;
+    margin-bottom: 20px;
+    
+    
+}
+
+.terms label {
+    margin-left: 30px;
+  
+}
+
+.login-link, .register-link {
+    margin-top: 10px;
+}
+
+.login-link a, .register-link a {
+    color: #ff8d29;
+    text-decoration: none;
+}
+
+   </style>
+
+   <style>
+
+.sign-up {
+    margin-top: 1rem;
+}
+
+.sign-up a {
+    color: #ff6b00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sign-up a:hover {
+    text-decoration: underline;
+}
+   </style>
+</head>
+<body>
+    
+	<div class="container">
+		<h1 style="display: flex; align-items: center;">
+			<a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+				<img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-left: 60px;">
+				<span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+			</a>
+		</h1>
+		<form id="login-form">
+			<input type="email" placeholder="Email" id="email" required>
+			<input type="password" placeholder="Password" id="password" required>
+			<button type="submit" id="login-btn">Login</button>
+		</form>
+		<p class="sign-up">Don't have an account? <a href="./register.html">Sign Up</a></p>
+	</div>
+	
+	<script>
+		document.getElementById('login-form').addEventListener('submit', function(event) {
+			event.preventDefault();  // Prevent the form from submitting the traditional way
+			
+			// Get the email and password values
+			var email = document.getElementById('email').value;
+			var password = document.getElementById('password').value;
+	
+			// Basic validation check
+			if (email && password) {
+				// In a real-world scenario, here you'd send the credentials to a server for authentication
+				// For now, we'll simulate a successful login and redirect to the home page
+				
+				alert('Login successful! Redirecting to the home page...');
+				window.location.href = './index.html'; // Redirect to the home page
+			} else {
+				alert('Please enter both email and password.');
+			}
+		});
+	</script>
+	
+		
+
+</body>
+</html>

@@ -1,0 +1,3134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie - Supper delicious Burger in town!</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Include Font Awesome CDN in your HTML <head> section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+
+    <!-- Add Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+    <style>
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .filter-controls select,
+        .filter-controls input[type="text"],
+        .filter-controls button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+        .filter-controls button {
+            background-color: #ff8d29;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 400px;
+        }
+
+        .filter-controls button:hover {
+            background-color: black;
+        }
+
+        .food-menu-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .food-menu-card {
+            background-color: #fff;
+            width: 30%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .food-menu-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-banner img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .card-title {
+            margin: 15px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .price {
+            font-size: 18px;
+            color: #888;
+        }
+
+        @media screen and (max-width: 768px) {
+            .food-menu-card {
+                width: 48%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .food-menu-card {
+                width: 100%;
+            }
+        }
+    </style>
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* justify-content: space-between; */
+            /* width: 80%; */
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: white;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
+            width: 300px;
+            height: 220px;
+        }
+
+        .style1 {
+            background-color: #e3f2fd;
+            /* Light blue */
+        }
+
+        .style2 {
+            background-color: #fce4ec;
+            /* Light pink */
+        }
+
+        .style3 {
+            background-color: #e8f5e9;
+            /* Light green */
+        }
+
+        .card h3 {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .card p {
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .card-banner {
+    position: relative;
+    width: 280px; /* Set your desired width */
+    height: 320px; /* Set your desired height */
+    overflow: hidden; /* Hide any overflow from images */
+}
+
+.card-banner img {
+    width: 100%; /* Make image take full width of the container */
+    height: 100%; /* Make image take full height of the container */
+    object-fit: cover; /* Cover the entire container without distortion */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+.card-banner img:hover {
+    transform: scale(1.05); /* Scale image on hover for a zoom effect */
+}
+
+    </style>
+
+
+</head>
+
+<body id="top">
+
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header style="position: sticky; top: 10px; background-color: white; z-index: 1000;">
+        <div class="container">
+
+            <h1 style="display: flex; align-items: center;">
+                <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                    <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+                </a>
+            </h1>
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+                    <li class="nav-item">
+                        <a href="./index.html" class="navbar-link " data-nav-link>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./menu.html" class="navbar-link active" data-nav-link>Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./review.html" class="navbar-link" data-nav-link>Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./event.html" class="navbar-link" data-nav-link>News & Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./FAQ.html" class="navbar-link" data-nav-link>FAQ's</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a>
+
+            <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+            </button>
+
+        </div>
+    </header>
+
+    <br>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="categoryFilter" style="margin-left: 400px;">
+            <option value="all">Filter by Category</option>
+            <option value="Appetizers">Appetizers</option>
+            <option value="Main Courses">Main Courses</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Beverages">Beverages</option>
+            <option value="Salads">Salads</option>
+            <option value="Soups">Soups</option>
+
+        </select>
+
+        <select id="preferenceFilter">
+            <option value="all">Filter by Preference</option>
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+            <option value="Vegan">Vegan</option>
+        </select>
+
+        <select id="priceFilter">
+            <option value="default">Sort by Price</option>
+            <option value="low-to-high">Low to High</option>
+            <option value="high-to-low">High to Low</option>
+        </select>
+
+        <button id="searchBtn">Search</button>
+    </div>
+
+
+    <!-- Food Menu List -->
+    <ul class="food-menu-list" id="foodMenuList" style="margin-left: 20px; margin-right: 20px;">
+        <!-- Example Food Menu Cards -->
+        <li class="food-menu-card" data-category="Appetizers" data-price="15.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="11.jpg" alt="Fried Chicken Unlimited">
+                <div class="badge">-15%</div>
+             <a href="detail1.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spinach and Artichoke Dip</h3>
+            <p class="price">&#8377; 49</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="12.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="21.jpg" alt="Burger King Whopper">
+                <div class="badge">-10%</div>
+             <a href="detail2.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Guacamole</h3>
+            <p class="price">&#8377; 89</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="19.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="551.jpg" alt="Kung Pao Tofu">
+                <div class="badge">-20%</div>
+             <a href="detail55.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Grilled Steak</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="13.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="31.jpg" alt="Pasta Alfredo">
+                <div class="badge">-5%</div>
+             <a href="detail3.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Buffalo Chicken Dip</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="10.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="561.jpg" alt="Sweet and Sour Pork">
+                <div class="badge">-12%</div>
+             <a href="detail56.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Roast Chicken</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="9.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="41.jpg" alt="Chana Masala">
+                <div class="badge">-8%</div>
+             <a href="detail4.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Hummus</h3>
+            <p class="price">&#377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="18.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="51.jpg" alt="Chicken Parmigiana">
+                <div class="badge">-10%</div>
+             <a href="detail5.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Queso Fundido</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="11.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="61.jpg" alt="Paneer Tikka">
+                <div class="badge">-7%</div>
+             <a href="detail6.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">French Onion Dip</h3>
+            <p class="price">&#8377; 99</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="8.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="571.jpg" alt="Vegetable Spring Rolls">
+                <div class="badge">-5%</div>
+             <a href="detail57.html"><button class="btn food-menu-btn">View Details</button></a>
+
+
+            </div>
+            <h3 class="card-title">Beef Stroganoff</h3>
+            <p class="price">&#8377; 599</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="71.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail7.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Salsa Verde</h3>
+            <p class="price">&#8377; 79</p>
+        </li>
+
+       
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="14.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="581.jpg" alt="Peking Duck">
+                <div class="badge">-18%</div>
+             <a href="detail58.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lamb Chops</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="81.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail8.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Tzatziki</h3>
+            <p class="price">&#8377; 79</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="17.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1091.jpg" alt="Margherita Pizza">
+                <div class="badge">-10%</div>
+             <a href="detail109.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chocolate Cake</h3>
+            <p class="price">&#8377; 550</p>
+        </li>
+
+        
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="591.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail59.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pork Tenderloin</h3>
+            <p class="price">&#8377; 599</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="91.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail9.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Baba Ganoush</h3>
+            <p class="price">&#8377; 139</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="22.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1101.jpg" alt="Lobster Ravioli">
+                <div class="badge">-15%</div>
+             <a href="detail110.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Red Velvet Cake</h3>
+            <p class="price">&#8377; 980</p>
+        </li>
+
+        
+
+       
+
+        <li class="food-menu-card" data-category="Desserts" data-price="21.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1111.jpg" alt="Beef Lasagna">
+                <div class="badge">-10%</div>
+             <a href="detail111.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cheesecake</h3>
+            <p class="price">&#8377; 220</p>
+        </li>
+
+        
+
+        
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1121.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail112.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Carrot Cake</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="101.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail10.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mozzarella Sticks</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="111.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail11.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Wings</h3>
+            <p class="price">&#8377; 249</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="121.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail12.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Stuffed Mushrooms</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="131.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail13.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Potato Skins</h3>
+            <p class="price">&#8377; 99</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="141.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail14.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mini Sliders</h3>
+            <p class="price">&#8377; 89</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="151.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail15.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Jalapeño Poppers</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="161.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail16.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spring Rolls</h3>
+            <p class="price">&#8377; 89</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="171.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail17.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Deviled Eggs</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="181.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail18.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mini Quesadillas</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="191.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail19.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Shrimp Cocktail</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="201.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail20.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Crab Cakes</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="211.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail21.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Calamari</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="221.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail22.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Smoked Salmon Crostini</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="231.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail23.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Clams Casino</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="241.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail24.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Ceviche</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="251.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail25.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Oysters Rockefeller</h3>
+            <p class="price">&#8377; 249</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="261.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail26.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Scallops Wrapped in Bacon</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="271.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail27.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lobster Bites</h3>
+            <p class="price">&#8377; 209</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="281.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail28.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Satay</h3>
+            <p class="price">&#8377; 259</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="291.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail29.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beef Kebabs</h3>
+            <p class="price">&#8377; 699</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="301.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail30.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Grilled Shrimp Skewers</h3>
+            <p class="price">&#8377; 459</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="311.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail31.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Caprese Skewers</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="321.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail32.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Teriyaki Chicken Skewers</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="331.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail33.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lamb Kofta Skewers</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="341.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail34.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vegetable Kebabs</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="351.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail35.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spicy Tofu Skewers</h3>
+            <p class="price">&#8377; 249</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="361.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail36.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pork Belly Skewers</h3>
+            <p class="price">&#8377; 799</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="371.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail37.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Sausage Rolls</h3>
+            <p class="price">&#8377; 49</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="381.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail38.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spanakopita</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="391.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail39.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mini Quiches</h3>
+            <p class="price">&#8377; 69</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="401.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail40.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Empanadas</h3>
+            <p class="price">&#8377; 79</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="411.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail41.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Samosas</h3>
+            <p class="price">&#8377; 49</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="421.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail42.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cheese Puffs</h3>
+            <p class="price">&#8377; 89</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="431.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail43.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pigs in a Blanket</h3>
+            <p class="price">&#8377; 99</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="441.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail44.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beef Wellington Bites</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="451.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail45.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Pot Pie Bites</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="461.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail46.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Brie with Fig Jam</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="471.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail47.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Aged Cheddar with Grapes</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="481.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail48.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Blue Cheese with Honey</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="491.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail49.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Goat Cheese with Cranberries</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="501.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail50.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Camembert with Walnuts</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="511.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail51.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Manchego with Quince Paste</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="521.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail52.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Gouda with Apples</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="531.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail53.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Feta with Olives</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Appetizers" data-price="20.99" data-preference="Veg">
+            <div class="card-banner">
+                <img src="541.jpg" alt="Seafood Linguine">
+                <div class="badge">-15%</div>
+             <a href="detail54.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mozzarella with Basil</h3>
+            <p class="price">&#8377; 179</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="601.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail60.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Meatloaf</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="611.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail61.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Marsala</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="621.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail62.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Barbecue Ribs</h3>
+            <p class="price">&#8377; 359</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="631.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail63.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beef Wellington</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="641.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail64.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Grilled Salmon</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="651.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail65.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Shrimp Scampi</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="661.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail66.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fish Tacos</h3>
+            <p class="price">&#8377; 599</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="671.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail67.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Baked Cod</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="681.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail68.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Seafood Paella</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="691.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail69.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lobster Tail</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="701.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail70.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Clam Chowder</h3>
+            <p class="price">&#8377; 499</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="711.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail71.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Stuffed Crab</h3>
+            <p class="price">&#8377; 399</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="721.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail72.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Teriyaki Salmon</h3>
+            <p class="price">&#8377; 359</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="731.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail73.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spaghetti Carbonara</h3>
+            <p class="price">&#8377; 169</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="741.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail74.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fettuccine Alfredo</h3>
+            <p class="price">&#8377; 139</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="751.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail75.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lasagna</h3>
+            <p class="price">&#8377; 159</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="761.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail76.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pesto Pasta</h3>
+            <p class="price">&#8377; 259</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="771.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail77.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Penne Arrabbiata</h3>
+            <p class="price">&#8377; 159</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="781.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail78.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Ravioli with Sage Butter</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="791.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail79.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Shrimp Linguine</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="801.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail80.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Baked Ziti</h3>
+            <p class="price">&#8377; 159</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="811.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail81.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pasta Primavera</h3>
+            <p class="price">&#8377; 259</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="821.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail82.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Stuffed Bell Peppers</h3>
+            <p class="price">&#8377; 99</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="831.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail83.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Eggplant Parmesan</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="841.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail84.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mushroom Risotto</h3>
+            <p class="price">&#8377; 169</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="851.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail85.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vegetable Stir-Fry</h3>
+            <p class="price">&#8377; 99</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="861.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail86.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spinach and Ricotta Cannelloni</h3>
+            <p class="price">&#8377; 189</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="871.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail87.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lentil Curry</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="881.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail88.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Quinoa Salad</h3>
+            <p class="price">&#8377; 259</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="891.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail89.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Grilled Vegetable Platter</h3>
+            <p class="price">&#8377; 209</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="901.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail90.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vegetable Enchiladas</h3>
+            <p class="price">&#8377; 109</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="911.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail91.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Biryani</h3>
+            <p class="price">&#8377; 299</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="921.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail92.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fried Rice</h3>
+            <p class="price">&#8377; 119</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="931.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail93.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Risotto</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="941.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail94.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Jambalaya</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="951.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail95.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Paella</h3>
+            <p class="price">&#8377; 109</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="961.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail96.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Coconut Rice with Mango</h3>
+            <p class="price">&#8377; 139</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="971.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail97.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Rice Pilaf</h3>
+            <p class="price">&#8377; 109</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="981.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail98.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Stuffed Grape Leaves</h3>
+            <p class="price">&#8377; 169</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="991.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail99.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Arroz con Pollo</h3>
+            <p class="price">&#8377; 139</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="1001.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail100.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Tikka Masala</h3>
+            <p class="price">&#8377; 229</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="1011.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail101.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beef Curry</h3>
+            <p class="price">&#8377; 329</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1021.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail102.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vegetable Korma</h3>
+            <p class="price">&#8377; 59</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="1031.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail103.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lamb Rogan Josh</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="1041.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail104.html.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Thai Green Curry</h3>
+            <p class="price">&#8377; 119</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1051.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail105.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Paneer Butter Masala</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="1061.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail106.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fish Curry</h3>
+            <p class="price">&#8377; 149</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="1071.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail107.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chickpea Curry</h3>
+            <p class="price">&#8377; 79</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Main Courses" data-price="9.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="1081.jpg" alt="Tofu Stir Fry">
+                <div class="badge">-8%</div>
+             <a href="detail108.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Massaman Curry</h3>
+            <p class="price">&#8377; 129</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1131.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail113.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Tiramisu</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1141.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail114.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Black Forest Cake</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1151.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail115.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lemon Tart</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1161.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail116.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Éclairs</h3>
+            <p class="price">&#8377; 160</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Vegan">
+            <div class="card-banner">
+                <img src="1171.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail117.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fruit Tart</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1181.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail118.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chocolate Chip Cookies</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1191.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail119.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Oatmeal Raisin Cookies</h3>
+            <p class="price">&#8377; 60</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1201.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail120.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Biscotti</h3>
+            <p class="price">&#8377; 80</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1211.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail121.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Gingerbread Cookies</h3>
+            <p class="price">&#8377; 90</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1221.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail122.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Thumbprint Cookies</h3>
+            <p class="price">&#8377; 80</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1231.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail123.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fortune Cookies</h3>
+            <p class="price">&#8377; 50</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1241.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail124.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Apple Pie</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1251.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail125.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pecan Pie</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1261.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail126.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pumpkin Pie</h3>
+            <p class="price">&#8377; 230</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1271.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail127.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Key Lime Pie</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1281.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail128.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lemon Meringue Pie</h3>
+            <p class="price">&#8377; 300</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1291.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail129.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Banoffee Pie</h3>
+            <p class="price">&#8377; 350</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1301.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail130.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Peach Cobbler</h3>
+            <p class="price">&#8377; 300</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1311.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail131.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Coconut Cream Pie</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1321.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail132.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vanilla Ice Cream</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1331.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail133.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Gelato</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1341.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail134.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Sorbet</h3>
+            <p class="price">&#8377; 220</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1351.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail135.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Frozen Yogurt</h3>
+            <p class="price">&#8377; 240</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1361.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail136.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Ice Cream Sundae</h3>
+            <p class="price">&#8377; 300</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1371.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail137.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mango Kulfi</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1381.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail138.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Baked Alaska</h3>
+            <p class="price">&#8377; 400</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1391.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail139.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Ice Cream Sandwich</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1401.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail140.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Popsicles</h3>
+            <p class="price">&#8377; 50</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1411.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail141.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Macarons</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1421.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail142.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Shortbread Cookies</h3>
+            <p class="price">&#8377; 99</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1431.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail143.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Peanut Butter Coolies</h3>
+            <p class="price">&#8377; 79</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Desserts" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1441.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail144.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Blueberry pie</h3>
+            <p class="price">&#8377; 199</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="145.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail145.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">water</h3>
+            <p class="price">&#8377; 50</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="146.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail146.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Coffee</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="147.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail147.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Tea</h3>
+            <p class="price">&#8377; 100</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="148.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail148.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Juice</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="149,jpg.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail149.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Milk</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="150.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail150.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Soda</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1511.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail151.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Ice tea</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1521.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail152.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">LemonTea</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1531.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail153.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Hot Chocolate</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1541.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail154.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Coconut Water</h3>
+            <p class="price">&#8377; 40</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1551.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail155.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beer</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1561.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail156.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Wine</h3>
+            <p class="price">&#8377; 1200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1571.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail157.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Whisky</h3>
+            <p class="price">&#8377; 2500</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1581.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail158.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vodka</h3>
+            <p class="price">&#8377; 1500</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1591.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail159.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Rum</h3>
+            <p class="price">&#8377; 1200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1601.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail160.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Teguila</h3>
+            <p class="price">&#8377; 1200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1611.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail161.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Champagene</h3>
+            <p class="price">&#8377; 4500</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1621.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail162.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Gin</h3>
+            <p class="price">&#8377; 1200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1631.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail163.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Brandy</h3>
+            <p class="price">&#8377; 1200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1641.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail164.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Sangria</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1651.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail165.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mojito</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1661.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail166.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Margarite</h3>
+            <p class="price">&#8377; 350</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1671.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail167.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Martini</h3>
+            <p class="price">&#8377; 450</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1681.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail168.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pina Colada</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1691.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail169.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Old Fashioned</h3>
+            <p class="price">&#8377; 450</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1701.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail170.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cosmopolitan</h3>
+            <p class="price">&#8377; 450</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1711.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail171.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Daiguivi</h3>
+            <p class="price">&#8377; 300</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1721.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail172.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Maitai</h3>
+            <p class="price">&#8377; 450</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1731.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail173.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Manhatan</h3>
+            <p class="price">&#8377; 450</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Beverages" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1741.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail174.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">BloodyMary</h3>
+            <p class="price">&#8377; 350</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1751.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail175.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Caesar</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1761.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail176.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Quinoa</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1771.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail77.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spinach Straberry</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1781.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail178.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Southwest Chicken</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1791.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail179.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Asian Sesame</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1801.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail180.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Tuna Nicoise</h3>
+            <p class="price">&#8377; 350</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1811.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail181.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mediterranean Chickpea Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1821.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail182.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beet and Goat Cheese Salad</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1831.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail183.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Arugula and Pear Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1841.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail184.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pasta Salad Primavera</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1851.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail185.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Coleslaw Salad</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1861.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail186.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fruit Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1871.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail187.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Kale Salad with Lemon Dressing</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1881.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail188.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Panzanella (Bread Salad)</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1891.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail189.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Roasted Vegetable Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1901.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail190.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Fattoush Salad</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1911.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail191.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Tomato and Cucumber Salad</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1921.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail192.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mixed Green Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1931.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail193.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Antipasto Salad</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1941.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail194.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Thai Mango Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1951.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail195.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lentil Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1961.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail196.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Grilled Peach Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1971.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail197.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Black Bean Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1981.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail198.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cabbage Salad with Peanut Dressing</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="1991.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail199.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chickpea Avocado Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2001.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail200.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Endive and Blue Cheese Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2011.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail201.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Harvest Salad with Apples and Walnuts</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2021.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail202.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Smoked Salmon Salad</h3>
+            <p class="price">&#8377; 450</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2031.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail203.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Broccoli Salad with Bacon</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2041.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail204.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Zucchini Noodle Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2051.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail205.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cilantro Lime Rice Salad</h3>
+            <p class="price">&#8377; 120</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Salads" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2061.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail206.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Egg Salad</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2111.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail211.html.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Tomato Basil Soup</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2121.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail212.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Minestrone Soup</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2131.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail213.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lentil Soup</h3>
+            <p class="price">&#8377; 160</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2141.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail214.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pumpkin Soup</h3>
+            <p class="price">&#8377; 170</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2151.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail215.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cream of Mushroom Soup</h3>
+            <p class="price">&#8377; 190</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2161.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail216.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Carrot Ginger Soup</h3>
+            <p class="price">&#8377; 150</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2171.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail217.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Vegetable Chowder</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2181.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail218.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Spinach & Potato Soup</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2191.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail219.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Butternut Squash Soup</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2201.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail220.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Sweet Corn Soup</h3>
+            <p class="price">&#8377; 180</p>
+        </li>
+        
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2211.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail221.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Broccoli Cheddar Soup</h3>
+            <p class="price">&#8377; 220</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2221.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail222.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Zucchini Soup</h3>
+            <p class="price">&#8377; 200</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2231.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail223.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Coconut Curry Soup</h3>
+            <p class="price">&#8377; 240</p>
+        </li>
+        
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2241.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail224.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Pea Soup</h3>
+            <p class="price">&#8377; 210</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2251.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail225.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mulligatawny Soup (vegetarian version)</h3>
+            <p class="price">&#8377; 230</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2261.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail226.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Cauliflower Soup</h3>
+            <p class="price">&#8377; 220</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Veg">
+            <div class="card-banner">
+                <img src="2271.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail227.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Roasted Red Pepper Soup</h3>
+            <p class="price">&#8377; 240</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2281.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail228.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Noodle Soup</h3>
+            <p class="price">&#8377; 250</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2291.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail229.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Beef Barley Soup</h3>
+            <p class="price">&#8377; 280</p>
+        </li>
+
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2301.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail230.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken Tortilla Soup</h3>
+            <p class="price">&#8377; 260</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2311.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail231.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">French Onion Soup</h3>
+            <p class="price">&#8377; 300</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2321.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail232.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Clam Chowder</h3>
+            <p class="price">&#8377; 320</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2331.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail233.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Thai Chicken Soup</h3>
+            <p class="price">&#8377; 340</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2341.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail234.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Shrimp Bisque</h3>
+            <p class="price">&#8377; 360</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2351.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail235.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken & Sweet Corn Soup</h3>
+            <p class="price">&#8377; 280</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2361.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail236.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Crab Soup</h3>
+            <p class="price">&#8377; 400</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2371.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail237.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Mulligatawny Soup (with chicken)</h3>
+            <p class="price">&#8377; 320</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2381.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail238.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Lamb Stew Soup</h3>
+            <p class="price">&#8377; 380</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2391.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail239.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Chicken and Wild Rice Soup</h3>
+            <p class="price">&#8377; 320</p>
+        </li>
+        <li class="food-menu-card" data-category="Soups" data-price="11.49" data-preference="Non-Veg">
+            <div class="card-banner">
+                <img src="2401.jpg" alt="Minestrone Soup">
+                <div class="badge">-10%</div>
+             <a href="detail240.html"><button class="btn food-menu-btn">View Details</button></a>
+
+            </div>
+            <h3 class="card-title">Italian Sausage and Kale Soup</h3>
+            <p class="price">&#8377; 350</p>
+        </li>
+        
+
+
+
+        <!-- Repeat more cards (total 12 cards) -->
+    </ul>
+    </div>
+
+
+    <script>
+        const categoryFilter = document.getElementById('categoryFilter');
+        const priceFilter = document.getElementById('priceFilter');
+        const preferenceFilter = document.getElementById('preferenceFilter');
+        const foodMenuList = document.getElementById('foodMenuList');
+        const foodMenuCards = Array.from(foodMenuList.children);
+        const searchBtn = document.getElementById('searchBtn');
+
+        // Search Button Event Listener
+        searchBtn.addEventListener('click', function () {
+            filterCards(); // Only filter when the search button is clicked
+            sortCards();   // Sort cards when the search button is clicked
+        });
+
+        // Combined Filter Function
+        function filterCards() {
+            const selectedCategory = categoryFilter.value;
+            const selectedPreference = preferenceFilter.value;
+
+            foodMenuCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                const cardPreference = card.getAttribute('data-preference');
+                const categoryMatch = selectedCategory === 'all' || cardCategory === selectedCategory;
+                const preferenceMatch = selectedPreference === 'all' || cardPreference === selectedPreference;
+
+                if (categoryMatch && preferenceMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Sort Cards by Price Function
+        function sortCards() {
+            const selectedSort = priceFilter.value;
+            const sortedCards = foodMenuCards.sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price'));
+                const priceB = parseFloat(b.getAttribute('data-price'));
+                if (selectedSort === 'low-to-high') {
+                    return priceA - priceB;
+                } else if (selectedSort === 'high-to-low') {
+                    return priceB - priceA;
+                } else {
+                    return 0; // Default
+                }
+            });
+            sortedCards.forEach(card => foodMenuList.appendChild(card));
+        }
+    </script>
+
+
+    <footer class="footer">
+
+        <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+            <div class="container">
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title">Contact Info</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="tel:+914012345678" class="contact-link">
+                                <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="mailto:foodhub@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> foodhub@gmail.com
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad"
+                                class="contact-link" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title">Quick Links</p>
+                    </li>
+                    <div style="display: flex;">
+                        <div>
+                            <li class="nav-item">
+                                <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+                            </li>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <li class="nav-item">
+                                <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-list-title">Opening Hours</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Saturday: 10:00-22:00</p>
+                    </li>
+
+                </ul>
+
+                <div class="footer-brand" style="margin-top: -10px;">
+
+                    <a href="#" class="logo">Foodhub</a>
+
+                    <p class="footer-text">
+                        Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of
+                        flavors from
+                        around the world.
+                    </p>
+
+                    <ul class="social-list">
+                        <li>
+                            <a href="https://www.facebook.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.twitter.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-twitter"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-pinterest"></ion-icon>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+            <p class="copyright-text" style="text-align: center;">
+                &copy; 2024 <a href="./index.html" class="copyright-link">Foodhub</a> All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+    <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+        <ion-icon name="chevron-up"></ion-icon>
+    </a>
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="./assets/js/script.js" defer></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

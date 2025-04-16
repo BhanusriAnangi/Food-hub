@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Basic Page Info -->
+		<meta charset="utf-8" />
+		<title>Foodhub</title>
+
+		<!-- Site favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="vendors/images/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="vendors/images/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="vendors/images/favicon-16x16.png"
+		/>
+
+		<!-- Mobile Specific Metas -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"
+		/>
+
+		<!-- Google Font -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="vendors/styles/icon-font.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="src/plugins/datatables/css/dataTables.bootstrap4.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="src/plugins/datatables/css/responsive.bootstrap4.min.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
+		></script>
+		<script
+			async
+			src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"
+			crossorigin="anonymous"
+		></script>
+		<!-- Google Tag Manager -->
+	
+		<!-- End Google Tag Manager -->
+		<style>
+			/* General Sidebar Styling */
+			.custom-menu-block {
+				width: 250px;
+				/* Adjust width as needed */
+				background-color: white;
+				/* Light beige background */
+				color: #333333;
+				/* Darker text color for contrast */
+				height: 100vh;
+				/* Full height */
+				overflow-y: auto;
+				/* Scrollable */
+				padding: 20px;
+				/* Padding for inner content */
+			}
+	
+			.custom-scroll {
+				scrollbar-width: thin;
+				/* Custom scrollbar */
+				scrollbar-color: #c0b283 #ffffff;
+				/* Scrollbar track and thumb color */
+			}
+	
+			.custom-scroll::-webkit-scrollbar {
+				width: 8px;
+			}
+	
+			.custom-scroll::-webkit-scrollbar-thumb {
+				background-color: #37B7C3;
+				/* Scrollbar thumb color (light warm brown) */
+				border-radius: 10px;
+			}
+	
+			/* Sidebar Menu Items */
+			.custom-sidebar-menu {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+	
+			.user-info {
+				display: flex;
+				align-items: center;
+			}
+	
+			.user-info-link {
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+				/* Remove underline from the link */
+				color: inherit;
+				/* Inherit color from parent, so user name is consistent */
+			}
+	
+			.user-info-link:hover {
+				opacity: 0.8;
+				/* Slightly reduce opacity on hover for a visual effect */
+			}
+	
+			.user-icon img {
+				width: 40px;
+				/* Adjust the size of the profile picture */
+				height: 40px;
+				border-radius: 50%;
+				/* Make the image circular */
+				margin-right: 10px;
+				/* Add space between image and text */
+			}
+	
+			.user-name {
+				font-size: 16px;
+				/* Adjust font size as needed */
+				font-weight: bold;
+				/* Make the user name bold */
+			}
+	
+			.custom-menu-item {
+				margin-bottom: 15px;
+				/* Spacing between items */
+			}
+	
+			.custom-menu-link {
+				display: flex;
+				align-items: center;
+				text-decoration: none;
+				/* Remove underline */
+				color: #333333;
+				/* Darker link color */
+				padding: 10px 15px;
+				/* Padding around link */
+				border-radius: 5px;
+				/* Rounded corners */
+				transition: background-color 0.3s ease;
+				/* Smooth hover effect */
+			}
+	
+			.custom-menu-link:hover {
+				background-color: #ff8d29;
+				/* Soft brown hover background color */
+			}
+	
+			/* Icon and Text Styling */
+			.custom-micon {
+				font-size: 20px;
+				/* Icon size */
+				margin-right: 10px;
+				/* Space between icon and text */
+				color: #806e53;
+				/* Light brown icon color */
+			}
+	
+			.custom-mtext {
+				font-weight: bold;
+				/* Bold text */
+				font-size: 18px;
+				/* Text size */
+				color: #333333;
+				/* Text color */
+			}
+	
+			.card-box {
+				padding: 20px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				background: #fff;
+			}
+	
+			.h4 {
+				margin: 0;
+			}
+	
+			.product-list {
+				display: flex;
+				flex-direction: column;
+				gap: 16px;
+			}
+	
+			.product-item {
+				display: flex;
+				align-items: center;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				overflow: hidden;
+				background: #fff;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				padding: 10px;
+			}
+	
+			.product-item img {
+				width: 70px;
+				height: 70px;
+				object-fit: cover;
+			}
+	
+			.product-details {
+				flex: 1;
+				margin-left: 10px;
+			}
+	
+			.product-details h5 {
+				margin: 0;
+				font-size: 16px;
+			}
+	
+			.product-actions {
+				margin-left: auto;
+				display: flex;
+				align-items: center;
+			}
+	
+			.dropdown {
+				position: relative;
+			}
+	
+			.dropdown-menu {
+				display: none;
+				position: absolute;
+				top: 100%;
+				right: 0;
+				background: #fff;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				padding: 10px;
+				z-index: 1000;
+				/* Ensure menu is on top */
+			}
+	
+			.dropdown-menu a {
+				display: block;
+				padding: 5px 10px;
+				color: #333;
+				text-decoration: none;
+			}
+	
+			.dropdown-menu a:hover {
+				background: #f1f1f1;
+			}
+	
+			.btn {
+				background-color: #ff8d29;
+				color: #fff;
+				border: none;
+				border-radius: 4px;
+				padding: 8px 16px;
+				cursor: pointer;
+				text-align: center;
+				font-size: 24px;
+				line-height: 1;
+				position: relative;
+			}
+	
+			.btn:hover {
+				background-color: black;
+			}
+	
+	
+			.dropdown-menu {
+				display: none;
+				/* Hide the dropdown menu by default */
+			}
+	
+			.dropdown-menu.show {
+				display: block;
+				/* Show the dropdown menu when 'show' class is applied */
+			}
+		</style>
+	</head>
+	
+	<body>
+	
+	
+		<div class="header">
+			<div class="header-left">
+				<div class="menu-icon bi bi-list"></div>
+				<div class="search-toggle-icon bi bi-search" data-toggle="header_search"></div>
+				<div class="header-search">
+					<form>
+						<div class="form-group mb-0">
+	
+							<div class="dropdown">
+	
+								<div class="dropdown-menu dropdown-menu-right">
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label">From</label>
+										<div class="col-sm-12 col-md-10">
+											<input class="form-control form-control-sm form-control-line" type="text" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label">To</label>
+										<div class="col-sm-12 col-md-10">
+											<input class="form-control form-control-sm form-control-line" type="text" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-sm-12 col-md-2 col-form-label">Subject</label>
+										<div class="col-sm-12 col-md-10">
+											<input class="form-control form-control-sm form-control-line" type="text" />
+										</div>
+									</div>
+	
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="header-right" style="margin-right: 1px; margin-left: 500px; margin-top: -70px;">
+				<div class="user-notification">
+					<div class="dropdown">
+						<a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
+							<i class="icon-copy dw dw-notification"></i>
+							<span class="badge notification-active"></span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="notification-list mx-h-350 customscroll">
+								<ul>
+									<li>
+										<a href="./detail21.html">
+											<img src="./211.jpg" alt="Dish Image" />
+											<h3>Special Offer: Calamari</h3>
+											<p>Enjoy 20% off on our Calamari this weekend! Don’t miss out.</p>
+										</a>
+									</li>
+									<li>
+										<a href="./detail20.html">
+											<img src="./201.jpg" alt="Dish Image" />
+											<h3>New Dish: Crab Cakes</h3>
+											<p>Try our new Crab Cakes with lemon butter sauce, now available at Foohub!</p>
+										</a>
+									</li>
+									<li>
+										<a href="./detail27.html">
+											<img src="./271.jpg" alt="Dish Image" />
+											<h3>Order Confirmed: Lobster Bites</h3>
+											<p>Your order for Lobster Bites is confirmed! Expected delivery within 30 minutes.</p>
+										</a>
+									</li>
+									<li>
+										<a href="./detail160.html">
+											<img src="./1601.jpg" alt="Dish Image" />
+											<h3>Price Drop: Premium Tequila</h3>
+											<p>The price of Premium Tequila has dropped by 10%! Order yours today.</p>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+	
+				<div class="user-info">
+					<a class="user-info-link" href="./profile.html">
+						<span class="user-icon">
+							<img src="./assets/images/Navya.jpg" alt="Profile Picture" />
+						</span>
+						<span class="user-name">Navya</span>
+					</a>
+				</div>
+	
+	
+			</div>
+		</div>
+	
+		<div class="right-sidebar">
+			<div class="sidebar-title">
+				<h3 class="weight-600 font-16 text-blue">
+					Layout Settings
+					<span class="btn-block font-weight-400 font-12">User Interface Settings</span>
+				</h3>
+				<div class="close-sidebar" data-toggle="right-sidebar-close">
+					<i class="icon-copy ion-close-round"></i>
+				</div>
+			</div>
+			<div class="right-sidebar-body customscroll">
+				<div class="right-sidebar-body-content">
+					<h4 class="weight-600 font-18 pb-10">Header Background</h4>
+					<div class="sidebar-btn-group pb-30 mb-10">
+						<a href="javascript:void(0);" class="btn btn-outline-primary header-white active">White</a>
+						<a href="javascript:void(0);" class="btn btn-outline-primary header-dark">Dark</a>
+					</div>
+	
+					<h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+					<div class="sidebar-btn-group pb-30 mb-10">
+						<a href="javascript:void(0);" class="btn btn-outline-primary sidebar-light">White</a>
+						<a href="javascript:void(0);" class="btn btn-outline-primary sidebar-dark active">Dark</a>
+					</div>
+	
+					<h4 class="weight-600 font-18 pb-10">Menu Dropdown Icon</h4>
+					<div class="sidebar-radio-group pb-10 mb-10">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebaricon-1" name="menu-dropdown-icon" class="custom-control-input"
+								value="icon-style-1" checked="" />
+							<label class="custom-control-label" for="sidebaricon-1"><i class="fa fa-angle-down"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebaricon-2" name="menu-dropdown-icon" class="custom-control-input"
+								value="icon-style-2" />
+							<label class="custom-control-label" for="sidebaricon-2"><i class="ion-plus-round"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebaricon-3" name="menu-dropdown-icon" class="custom-control-input"
+								value="icon-style-3" />
+							<label class="custom-control-label" for="sidebaricon-3"><i
+									class="fa fa-angle-double-right"></i></label>
+						</div>
+					</div>
+	
+					<h4 class="weight-600 font-18 pb-10">Menu List Icon</h4>
+					<div class="sidebar-radio-group pb-30 mb-10">
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebariconlist-1" name="menu-list-icon" class="custom-control-input"
+								value="icon-list-style-1" checked="" />
+							<label class="custom-control-label" for="sidebariconlist-1"><i
+									class="ion-minus-round"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebariconlist-2" name="menu-list-icon" class="custom-control-input"
+								value="icon-list-style-2" />
+							<label class="custom-control-label" for="sidebariconlist-2"><i class="fa fa-circle-o"
+									aria-hidden="true"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebariconlist-3" name="menu-list-icon" class="custom-control-input"
+								value="icon-list-style-3" />
+							<label class="custom-control-label" for="sidebariconlist-3"><i class="dw dw-check"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebariconlist-4" name="menu-list-icon" class="custom-control-input"
+								value="icon-list-style-4" checked="" />
+							<label class="custom-control-label" for="sidebariconlist-4"><i
+									class="icon-copy dw dw-next-2"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebariconlist-5" name="menu-list-icon" class="custom-control-input"
+								value="icon-list-style-5" />
+							<label class="custom-control-label" for="sidebariconlist-5"><i
+									class="dw dw-fast-forward-1"></i></label>
+						</div>
+						<div class="custom-control custom-radio custom-control-inline">
+							<input type="radio" id="sidebariconlist-6" name="menu-list-icon" class="custom-control-input"
+								value="icon-list-style-6" />
+							<label class="custom-control-label" for="sidebariconlist-6"><i class="dw dw-next"></i></label>
+						</div>
+					</div>
+	
+					<div class="reset-options pt-30 text-center">
+						<button class="btn btn-danger" id="reset-settings">
+							Reset Settings
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="left-side-bar">
+			<h1 style="display: flex; align-items: center; height: 70px; background-color: white; margin-left: 20px;">
+				<a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+				  <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+				  <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+				</a>
+			  </h1>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+			<div class="custom-menu-block custom-scroll">
+				<div class="custom-sidebar-menu">
+					<ul id="custom-accordion-menu">
+						<li class="custom-menu-item">
+							<a href="./index.html" class="custom-menu-link">
+								<span class="custom-micon bi bi-house"></span>
+								<span class="custom-mtext">Home</span>
+							</a>
+						</li>
+						<li class="custom-menu-item">
+							<a href="./dashboard.html" class="custom-menu-link">
+								<span class="custom-micon bi bi-textarea-resize"></span>
+								<span class="custom-mtext">Dashboard</span>
+							</a>
+						</li>
+						<li class="custom-menu-item">
+							<a href="./history.html" class="custom-menu-link" id="order-history-toggle">
+								<span class="custom-micon fas fa-history"></span>
+								<span class="custom-mtext">Order History</span>
+							</a>
+						</li>
+						<li class="custom-menu-item">
+							<a href="./profile.html" class="custom-menu-link">
+								<span class="custom-micon bi bi-person-circle"></span>
+								<span class="custom-mtext">Edit Profile</span>
+							</a>
+						</li>
+	
+						<li class="custom-menu-item">
+							<a href="./login.html" class="custom-menu-link">
+								<span class="custom-micon bi bi-box-arrow-in-right"></span>
+								<span class="custom-mtext">Sign In</span>
+							</a>
+						</li>
+						<li class="custom-menu-item">
+							<a href="./register.html" class="custom-menu-link">
+								<span class="custom-micon bi bi-person-plus"></span>
+								<span class="custom-mtext">Sign Up</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+	
+		</div>
+		<div class="mobile-menu-overlay"></div>
+
+
+	    <div class="main-container">
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="min-height-200px">
+		
+					<div class="card-box mb-30">
+						<div class="pd-20">
+							<h4 class="text h3" style="color: #ff8d29;">Order History</h3>
+						</div>
+						<div class="pb-20">
+							<table class="data-table table hover multiple-select-row nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Customer Name</th>
+										<th>Order ID</th>
+										<th>Payment Method</th>
+										<th>Delivery Address</th>
+										<th>Delivery Date</th>
+										<th>Total Amount</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="table-plus">John D. Doe</td>
+										<td>10245</td>
+										<td>Credit Card</td>
+										<td>123 Main St, 110034, New Delhi</td>
+										<td>22-10-2024</td>
+										<td>₹1,200</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Aisha Khan</td>
+										<td>10246</td>
+										<td>Debit Card</td>
+										<td>45 Park Ave, 400050, Mumbai</td>
+										<td>29-10-2024</td>
+										<td>₹850</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Ravi Kumar</td>
+										<td>10247</td>
+										<td>Paytm</td>
+										<td>67 MG Road, 560001, Bengaluru</td>
+										<td>17-09-2024</td>
+										<td>₹980</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Sneha Sharma</td>
+										<td>10248</td>
+										<td>COD</td>
+										<td>21 JP Nagar, 700019, Kolkata</td>
+										<td>12-09-2024</td>
+										<td>₹1,500</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Vikram Singh</td>
+										<td>10249</td>
+										<td>PhonePe</td>
+										<td>78 Gachibowli, 500032, Hyderabad</td>
+										<td>02-09-2024</td>
+										<td>₹2,000</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Priya Agarwal</td>
+										<td>10250</td>
+										<td>Google Pay</td>
+										<td>15 Sector 12, 122001, Gurgaon</td>
+										<td>23-09-2024</td>
+										<td>₹1,850</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Rahul Verma</td>
+										<td>10251</td>
+										<td>COD</td>
+										<td>9 Connaught Place, 110001, New Delhi</td>
+										<td>22-09-2024</td>
+										<td>₹750</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Meena Iyer</td>
+										<td>10252</td>
+										<td>Credit Card</td>
+										<td>4 Banjara Hills, 500034, Hyderabad</td>
+										<td>27-09-2024</td>
+										<td>₹950</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Suresh Patel</td>
+										<td>10253</td>
+										<td>Paytm</td>
+										<td>56 Vile Parle, 400057, Mumbai</td>
+										<td>07-09-2024</td>
+										<td>₹1,300</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Lakshmi Rao</td>
+										<td>10254</td>
+										<td>PhonePe</td>
+										<td>8 Whitefield, 560066, Bengaluru</td>
+										<td>19-10-2024</td>
+										<td>₹2,100</td>
+									</tr>
+									<tr>
+										<td class="table-plus">Aman Gupta</td>
+										<td>10255</td>
+										<td>Google Pay</td>
+										<td>14 DLF Phase 2, 122008, Gurgaon</td>
+										<td>23-10-2024</td>
+										<td>₹1,020</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+		
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- welcome modal end -->
+		<!-- js -->
+		<script src="vendors/scripts/core.js"></script>
+		<script src="vendors/scripts/script.min.js"></script>
+		<script src="vendors/scripts/process.js"></script>
+		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+		<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+		<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+		<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+		<!-- buttons for Export datatable -->
+		<script src="src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+		<script src="src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+		<script src="src/plugins/datatables/js/buttons.print.min.js"></script>
+		<script src="src/plugins/datatables/js/buttons.html5.min.js"></script>
+		<script src="src/plugins/datatables/js/buttons.flash.min.js"></script>
+		<script src="src/plugins/datatables/js/pdfmake.min.js"></script>
+		<script src="src/plugins/datatables/js/vfs_fonts.js"></script>
+		<!-- Datatable Setting js -->
+		<script src="vendors/scripts/datatable-setting.js"></script>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
+				height="0"
+				width="0"
+				style="display: none; visibility: hidden"
+			></iframe
+		></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	</body>
+</html>

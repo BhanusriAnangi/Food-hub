@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie - Supper delicious Burger in town!</title>
+
+    <!-- 
+    - favicon
+  -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- 
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- Include Font Awesome CDN in your HTML <head> section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- 
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+
+    <!-- Add Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- 
+    - preload images
+  -->
+    <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+    <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+    <style>
+        .category-buttons {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            background-color: #ff8D29;
+            color: #fff;
+            padding: 10px 60px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .category-btn:hover {
+            background-color: #998100;
+        }
+    </style>
+
+
+</head>
+
+<body id="top">
+
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header>
+        <div class="container">
+
+            <h1 style="display: flex; align-items: center;">
+                <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+                    <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+                </a>
+            </h1>
+
+
+
+
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+
+                    <li class="nav-item">
+                        <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./menu.html" class="navbar-link" data-nav-link>Menu</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="./review.html" class="navbar-link" data-nav-link>Reviews</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="./event.html" class="navbar-link" data-nav-link>News & Events</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="./blog.html" class="navbar-link active" data-nav-link>Blog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="./FAQ.html" class="navbar-link" data-nav-link>FAQ's</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
+            <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a>
+
+            <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+                <span class="line top"></span>
+                <span class="line middle"></span>
+                <span class="line bottom"></span>
+            </button>
+        </div>
+
+        </div>
+    </header>
+
+
+    <section class="section section-divider white blog" id="blog">
+        <div class="container">
+
+            <p class="section-subtitle">Latest Blog Posts</p>
+
+            <h2 class="h2 section-title">
+                This Is All About <span class="span">Foods</span>
+            </h2>
+
+            <p class="section-text">
+                Food is any substance consumed to provide nutritional support for an organism.
+            </p>
+
+            <!-- Category Filter Buttons -->
+            <div class="category-buttons">
+                <button class="category-btn" data-category="all">All</button>
+                <button class="category-btn" data-category="Recipes">Recipes</button>
+                <button class="category-btn" data-category="Updates">Updates</button>
+                <button class="category-btn" data-category="Industry New">Industry New</button>
+            </div>
+
+            <ul class="blog-list">
+
+                <li class="blog-card" data-category="Recipes">
+                    <div class="card-banner">
+                        <img src="recipe1.jpg" width="600" height="390" loading="lazy"
+                            alt="Discover the Hidden Flavors in Savory Secrets!" class="w-100">
+                        <div class="badge">Savory</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2022-01-01">Jan 01 2023</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Jack</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub.html" class="card-title">Discover the Hidden Flavors in Savory Secrets!</a>
+                        </h3>
+                        <p class="card-text">Explore culinary tips and tricks to unlock bold, savory flavors in your
+                            favorite dishes...</p>
+                        <a href="blogsub.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Recipes">
+                    <div class="card-banner">
+                        <img src="recipe2.jpg" width="600" height="390" loading="lazy"
+                            alt="Unravel the Magic of Culinary Chronicles!" class="w-100">
+                        <div class="badge">Culinary</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub2.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-01">Oct 01 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Chef Anna</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub2.html" class="card-title">Unravel the Magic of Culinary Chronicles!</a>
+                        </h3>
+                        <p class="card-text">Join us on a gastronomic journey as we dive into culinary wonders, recipes,
+                            and kitchen secrets...</p>
+                        <a href="blogsub2.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Recipes">
+                    <div class="card-banner">
+                        <img src="recipe4.jpg" width="600" height="390" loading="lazy"
+                            alt="Unveil the Art of Fine Dining with Gourmet Delights!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub4.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Sophia</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub4.html" class="card-title">Unveil the Art of Fine Dining with Gourmet
+                                Delights!</a>
+                        </h3>
+                        <p class="card-text">Indulge in exquisite culinary experiences and learn how to master gourmet
+                            techniques in your kitchen...</p>
+                        <a href="blogsub4.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+
+
+                <li class="blog-card" data-category="Recipes">
+                    <div class="card-banner">
+                        <img src="recipe3.2.jpg" width="600" height="390" loading="lazy"
+                            alt="Unveil the Magic in Flavor Fusion Creations!" class="w-100">
+                        <div class="badge">Fusion</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub3.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2023-10-01">Oct 01 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub3.html" class="card-title">Unveil the Magic in Flavor Fusion Creations!</a>
+                        </h3>
+                        <p class="card-text">Dive into the world of Flavor Fusion and learn how to create unforgettable
+                            dishes with creative flavor pairings...</p>
+                        <a href="blogsub3.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                <li class="blog-card" data-category="Recipes">
+                    <div class="card-banner">
+                        <img src="recipe5.2.jpg" width="600" height="390" loading="lazy"
+                            alt="Uncovering the Secrets of Flavorful Recipes!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub5.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub5.html" class="card-title">Uncovering the Secrets of Flavorful Recipes!</a>
+                        </h3>
+                        <p class="card-text">Dive into the world of culinary mastery and discover innovative techniques to elevate your cooking experience...</p>
+                        <a href="blogsub5.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="blog-card" data-category="Updates">
+                    <div class="card-banner">
+                        <img src="updates1.jpg" width="600" height="390" loading="lazy"
+                            alt="Savor Every Bite with Dine Daily!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub6.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub6.html" class="card-title">Savor Every Bite with Dine Daily!</a>
+                        </h3>
+                        <p class="card-text">Join us for daily dining inspiration, with delicious recipes and culinary tips to elevate your meals...</p>
+                        <a href="blogsub6.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Updates">
+                    <div class="card-banner">
+                        <img src="updates2.jpg" width="600" height="390" loading="lazy"
+                            alt="Unveiling the Art of Plating: A Comprehensive Guide" class="w-100">
+                        <div class="badge">Culinary Art</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub7.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub7.html" class="card-title">Unveiling the Art of Plating: A Comprehensive Guide</a>
+                        </h3>
+                        <p class="card-text">Dive into the world of plating techniques to elevate your culinary presentations and impress your guests...</p>
+                        <a href="blogsub7.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Updates">
+                    <div class="card-banner">
+                        <img src="updates3.jpg" width="600" height="390" loading="lazy"
+                            alt="Unveiling Culinary Insights at Gourmet Haven!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub8.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-01">Oct 01 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub8.html" class="card-title">Unveiling Culinary Insights at Gourmet Haven!</a>
+                        </h3>
+                        <p class="card-text">Join us for a deep dive into the world of gastronomy, discovering fresh insights and innovative ideas for your dining experience...</p>
+                        <a href="blogsub8.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Updates">
+                    <div class="card-banner">
+                        <img src="updates4.2.jpg" width="600" height="390" loading="lazy"
+                            alt="Explore the Best Restaurants in Town!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub9.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Sophia</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub9.html" class="card-title">Discover the Best Restaurants to Savor This Fall!</a>
+                        </h3>
+                        <p class="card-text">Join us as we explore the top dining spots to indulge in delicious cuisine this season...</p>
+                        <a href="blogsub9.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="blog-card" data-category="Updates">
+                    <div class="card-banner">
+                        <img src="updates5.jpg" width="600" height="390" loading="lazy"
+                            alt="Elevate Your Cooking: Innovative Culinary Techniques!" class="w-100">
+                        <div class="badge">Innovative</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub10.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Sophia</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub10.html" class="card-title">Elevate Your Cooking: Innovative Culinary Techniques!</a>
+                        </h3>
+                        <p class="card-text">Discover the latest culinary trends and techniques that will transform your cooking experience...</p>
+                        <a href="blogsub10.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                
+                
+                
+                
+
+               
+
+                <li class="blog-card" data-category="Industry New">
+                    <div class="card-banner">
+                        <img src="industy1.jpg" width="600" height="390" loading="lazy"
+                            alt="Embark on a Culinary Journey with Foodie Frontier!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub11.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2023-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub11.html" class="card-title">Embark on a Culinary Journey with Foodie Frontier!</a>
+                        </h3>
+                        <p class="card-text">Dive into the world of Foodie Frontier and discover innovative recipes and dining experiences that tantalize your taste buds...</p>
+                        <a href="blogsub11.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Industry New">
+                    <div class="card-banner">
+                        <img src="industy2.jpg" width="600" height="390" loading="lazy"
+                            alt="Savor the Best Dining Experiences!" class="w-100">
+                        <div class="badge">Delicious</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub12.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2023-10-01">Oct 01 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emma</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub12.html" class="card-title">Savor the Best Dining Experiences!</a>
+                        </h3>
+                        <p class="card-text">Join us as we explore the art of dining and discover exquisite flavors in every bite...</p>
+                        <a href="blogsub12.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="blog-card" data-category="Industry New">
+                    <div class="card-banner">
+                        <img src="industy3.jpg" width="600" height="390" loading="lazy"
+                            alt="Savor the Unique Delights of Culinary Wonders!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub13.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2023-04-15">Apr 15 2023</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emily</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub13.html" class="card-title">Savor the Unique Delights of Culinary Wonders!</a>
+                        </h3>
+                        <p class="card-text">Dive into a world of culinary exploration with tips to elevate your cooking skills and delight your palate...</p>
+                        <a href="blogsub13.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="blog-card" data-category="Industry New">
+                    <div class="card-banner">
+                        <img src="industy4.jpg" width="600" height="390" loading="lazy"
+                            alt="Exploring Culinary Delights in Gastronomy Gazette!" class="w-100">
+                        <div class="badge">Gastronomy</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub14.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2023-10-04">Oct 04 2023</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emma</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub14.html" class="card-title">Exploring Culinary Delights in Gastronomy Gazette!</a>
+                        </h3>
+                        <p class="card-text">Dive into the world of gastronomy and discover delicious recipes and innovative culinary techniques...</p>
+                        <a href="blogsub14.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="blog-card" data-category="Industry New">
+                    <div class="card-banner">
+                        <img src="industy5.jpg" width="600" height="390" loading="lazy"
+                            alt="Unveiling the Secrets of Culinary Delight!" class="w-100">
+                        <div class="badge">Gourmet</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta-wrapper">
+                            <a href="blogsub15.html" class="card-meta-link">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <time class="meta-info" datetime="2024-10-04">Oct 04 2024</time>
+                            </a>
+                            <a href="#" class="card-meta-link">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <p class="meta-info">Emma</p>
+                            </a>
+                        </div>
+                        <h3 class="h3">
+                            <a href="blogsub15.html" class="card-title">Unveiling the Secrets of Culinary Delight!</a>
+                        </h3>
+                        <p class="card-text">Dive into exquisite recipes and tips to elevate your culinary experience...</p>
+                        <a href="blogsub15.html" class="btn-link">
+                            <span>Read More</span>
+                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
+                        </a>
+                    </div>
+                </li>
+                
+                
+                
+
+               
+
+            </ul>
+
+        </div>
+    </section>
+
+
+    <script>
+        // Wait until the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get all category buttons
+            const categoryButtons = document.querySelectorAll('.category-btn');
+
+            // Get all blog cards
+            const blogCards = document.querySelectorAll('.blog-card');
+
+            // Add event listeners to each category button
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Get the selected category
+                    const selectedCategory = this.getAttribute('data-category');
+
+                    // Filter the blog cards
+                    blogCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+
+                        // Show or hide the card based on the selected category
+                        if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+                            card.style.display = 'block'; // Show the card
+                        } else {
+                            card.style.display = 'none'; // Hide the card
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+
+
+    <footer class="footer">
+
+        <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+            <div class="container">
+
+
+
+
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title">Contact Info</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="tel:+914012345678" class="contact-link">
+                                <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="mailto:foodhub@gmail.com" class="contact-link">
+                                <i class="fas fa-envelope"></i> foodhub@gmail.com
+                            </a>
+                        </p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">
+                            <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad"
+                                class="contact-link" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                            </a>
+                        </p>
+                    </li>
+                </ul>
+
+
+
+
+                <ul class="footer-list">
+                    <li>
+                        <p class="footer-list-title">Quick Links</p>
+                    </li>
+                    <div style="display: flex;">
+                        <div>
+                            <li class="nav-item">
+                                <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+                            </li>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <li class="nav-item">
+                                <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-list-title">Opening Hours</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+                    </li>
+
+                    <li>
+                        <p class="footer-list-item">Saturday: 10:00-22:00</p>
+                    </li>
+
+                </ul>
+
+                <div class="footer-brand" style="margin-top: -10px;">
+
+                    <a href="#" class="logo">Foodhub</a>
+
+                    <p class="footer-text">
+                        Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of
+                        flavors from around the world.
+                    </p>
+
+                    <ul class="social-list">
+                        <li>
+                            <a href="https://www.facebook.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-facebook"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.twitter.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-twitter"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-instagram"></ion-icon>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                                <ion-icon name="logo-pinterest"></ion-icon>
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+            <p class="copyright-text" style="text-align: center;">
+                &copy; 2024 <a href="./index.html" class="copyright-link">Foodhub</a> All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+
+
+
+    <!-- 
+    - #BACK TO TOP
+  -->
+
+    <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+        <ion-icon name="chevron-up"></ion-icon>
+    </a>
+
+
+
+
+
+    <!-- 
+    - custom js link
+  -->
+    <script src="./assets/js/script.js" defer></script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Foodhub</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playball&display=swap" rel="stylesheet">
+
+        
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="event.css.css" rel="stylesheet">
+
+        
+
+        
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+   
+   <!-- Include Font Awesome CDN in your HTML <head> section -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  
+  <!-- Add Bootstrap Icons CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"rel="stylesheet"/>
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+
+  <style>
+    .container1 {
+        display: flex;
+        width: 90%;
+        max-width: 1000px;
+        height: 500px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        margin-left: 150px;
+    }
+
+    .faq-container1 {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    .faq-title {
+        text-align: center;
+        font-size: 2em;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 20px;
+    }
+
+    .faq-item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 0;
+        transition: all 0.4s ease-in-out;
+        overflow: hidden;
+        opacity: 0;
+        /* Initially hidden */
+        transform: scale(0.9) translateY(20px);
+        /* Initially small and slightly below */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        
+    }
+
+    .faq-item.show {
+        opacity: 1;
+        /* Fully visible */
+        transform: scale(1) translateY(0);
+        /* Return to normal size and position */
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        animation: popUp 0.6s ease forwards;
+    }
+
+    @keyframes popUp {
+        0% {
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .question {
+        flex: 1;
+        padding-left: 30px;
+        padding-right: 20px;
+        color: #000;
+        font-size: 20px;
+    }
+
+    .answer {
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        color: #000;
+        font-size:20px ;
+    }
+
+    .faq-item.open .answer {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .toggle-btn {
+        font-size: 2.5em;
+        cursor: pointer;
+        transition: transform 0.4s ease-in-out;
+        margin-right: 20px;
+        color: #000;
+    }
+
+    .faq-item.open .toggle-btn {
+        transform: rotate(45deg);
+    }
+
+    .pic {
+        width: 300px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .doctor-image {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        transform: scale(0.9) rotate(0deg);
+        transition: transform 0.7s ease-in-out, box-shadow 0.5s ease-in-out, filter 0.5s ease-in-out;
+        filter: grayscale(80%) blur(2px);
+    }
+
+    .pic:hover .doctor-image {
+        transform: scale(1.1) rotate(5deg);
+        filter: grayscale(0%) blur(0);
+    }
+
+    .pic:hover .doctor-image::after {
+        opacity: 1;
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    .pic:hover .doctor-image {
+        animation: pulse 1.5s infinite;
+    }
+</style>
+    </head>
+
+<body id="top">
+
+    <!-- 
+      - #HEADER
+    -->
+  
+    <header class="header" data-header>
+      <div class="container">
+  
+        <h1 style="display: flex; align-items: center;">
+          <a href="./index.html" class="logo" style="display: flex; align-items: center; text-decoration: none;">
+            <img src="./icon.png" alt="Foodie Logo" style="height: 40px; width: auto; margin-right: 10px;">
+            <span style="font-size: 32px; font-weight: bold; color: #ff8d29;">Foodhub</span>
+          </a>
+        </h1>
+        
+  
+        
+  
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+  
+            <li class="nav-item">
+              <a href="./index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./about.html" class="navbar-link" data-nav-link>About</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./menu.html" class="navbar-link" data-nav-link>Menu</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a href="./reserve.html" class="navbar-link" data-nav-link>Reservation</a>
+            </li>
+  
+             
+            <li class="nav-item">
+              <a href="./review.html" class="navbar-link" data-nav-link>Reviews</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a href="./event.html" class="navbar-link" data-nav-link>News & Events</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./contact.html" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="./blog.html" class="navbar-link" data-nav-link>Blog</a>
+            </li>
+  
+            <li class="nav-item">
+              <a href="./FAQ.html" class="navbar-link active" data-nav-link>FAQ's</a>
+            </li>
+  
+          </ul>
+        </nav>
+  
+  
+         <a href="./dashboard.html"><button class="btn btn-hover">Dashboard</button></a> 
+  
+          <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
+          </button>
+        </div>
+  
+      </div>
+    </header>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container1">
+  <div class="faq-container1">
+      <h1 class="faq-title" style="color: black;">Frequently Asked Questions</h1>
+      <div class="faq-item">
+          <span class="toggle-btn">+</span>
+          <div class="question">
+              <h4 >What type of cuisine do you serve?</h4>
+          </div>
+          <div class="answer">
+              <p>We serve a wide variety of dishes, including local and international cuisines, with a focus on fresh ingredients and authentic flavors.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <span class="toggle-btn">+</span>
+          <div class="question">
+              <h4>How can I make a reservation?</h4>
+          </div>
+          <div class="answer">
+              <p>Reservations can be made online through our website or by calling our restaurant directly.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <span class="toggle-btn">+</span>
+          <div class="question">
+              <h4>Do you offer vegetarian and vegan options?</h4>
+          </div>
+          <div class="answer">
+              <p>Yes, we offer a variety of vegetarian and vegan dishes, clearly marked on our menu.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <span class="toggle-btn">+</span>
+          <div class="question">
+              <h4>Can I host private events at your restaurant?</h4>
+          </div>
+          <div class="answer">
+              <p>Yes, we provide private dining options for special events. Please contact us for more details.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <span class="toggle-btn">+</span>
+          <div class="question">
+              <h4>Do you offer catering services?</h4>
+          </div>
+          <div class="answer">
+              <p>We offer catering for various events, including weddings, corporate functions, and parties.</p>
+          </div>
+      </div>
+      <div class="faq-item">
+          <span class="toggle-btn">+</span>
+          <div class="question">
+              <h4>What are your opening hours?</h4>
+          </div>
+          <div class="answer">
+              <p>We are open Monday to Sunday from 11:00 AM to 10:00 PM.</p>
+          </div>
+      </div>
+  </div>
+  <div class="pic">
+    <img src="faq.webp" alt="Doctor" class="doctor-image">
+</div>
+</div>
+
+
+ 
+
+
+<footer class="footer">
+
+    <div class="footer-top" style="background-image: url('./assets/images/footerbackground.jpeg')">
+      <div class="container">
+
+  
+
+
+
+        <ul class="footer-list">
+          <li>
+              <p class="footer-list-title">Contact Info</p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="tel:+914012345678" class="contact-link">
+                      <i class="fas fa-phone"></i> +91 (040) 1234-5678
+                  </a>
+              </p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="mailto:foodhub@gmail.com" class="contact-link">
+                      <i class="fas fa-envelope"></i> foodhub@gmail.com
+                  </a>
+              </p>
+          </li>
+          
+          <li>
+              <p class="footer-list-item">
+                  <a href="https://www.google.com/maps?q=100+Feet+Road,+Madhapur,+Hyderabad" class="contact-link" target="_blank">
+                      <i class="fas fa-map-marker-alt"></i> 100 Feet Road, Madhapur, Hyderabad
+                  </a>
+              </p>
+          </li>
+      </ul>
+      
+
+          
+
+        <ul class="footer-list">
+          <li>
+            <p class="footer-list-title">Quick Links</p>
+          </li>
+          <div style="display: flex;">
+            <div>
+              <li class="nav-item">
+                <a href="./index.html" class="footer-list-item" data-nav-link>Home</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./about.html" class="footer-list-item" data-nav-link>About</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./menu.html" class="footer-list-item" data-nav-link>Menu</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./reserve.html" class="footer-list-item" data-nav-link>Reservation</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./review.html" class="footer-list-item" data-nav-link>Reviews</a>
+              </li>
+            </div>
+            <div style="margin-left: 20px;">
+              <li class="nav-item">
+                <a href="./event.html" class="footer-list-item" data-nav-link>News & Events</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./contact.html" class="footer-list-item" data-nav-link>Contact</a>
+              </li>
+              <li class="nav-item">
+                <a href="./blog.html" class="footer-list-item" data-nav-link>Blog</a>
+              </li>
+        
+              <li class="nav-item">
+                <a href="./FAQ.html" class="footer-list-item" data-nav-link>FAQ's</a>
+              </li>
+            </div>
+          </div>
+        </ul>
+        
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Opening Hours</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Monday-Friday: 08:00-22:00</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Tuesday 4PM: Till Mid Night</p>
+          </li>
+
+          <li>
+            <p class="footer-list-item">Saturday: 10:00-22:00</p>
+          </li>
+
+        </ul>
+
+        <div class="footer-brand" style="margin-top: -10px;">
+
+            <a href="#" class="logo">Foodhub</a>
+  
+            <p class="footer-text">
+                Foodhub is your ultimate destination for a diverse culinary experience, offering a fusion of flavors from around the world.           
+             </p>
+  
+             <ul class="social-list">
+              <li>
+                <a href="https://www.facebook.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.twitter.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.instagram.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://www.pinterest.com" class="social-link" target="_blank">
+                  <ion-icon name="logo-pinterest"></ion-icon>
+                </a>
+              </li>
+            </ul>
+            
+  
+          </div>
+
+        
+      </div>
+             
+     
+    </div>
+    <div class="containers" style="background-image:url('./assets/images/footerbackground2.jpeg') ;">
+    <p class="copyright-text" style="text-align: center;">
+      &copy; 2024 <a href="./index.html" class="copyright-link" >Foodhub</a> All Rights Reserved.
+    </p> 
+  </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('show');
+        }, index * 200);
+
+        item.querySelector('.toggle-btn').addEventListener('click', () => {
+            item.classList.toggle('open');
+        });
+    });
+</script>
+
+    </body>
+
+</html>
